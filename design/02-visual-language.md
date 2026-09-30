@@ -37,7 +37,7 @@ The site is **sunlit marble with gold trim**. Surfaces are warm whites and ivori
 
 ### Age tints (Experience timeline)
 Each Age band gets a faint wash (≈6%) over marble plus a colored Age label:
-- **Antiquity:** terracotta `#A5612E`
+- **Antiquity:** terracotta `#8F5024`
 - **Exploration:** lapis `#2A4F8F`
 - **Modern:** verdigris `#3F7568`
 
@@ -94,7 +94,7 @@ On mobile, display sizes shrink by about 35%. Body text stays at 17–18px.
 
 ## Surfaces & texture (Imperator influence)
 
-- **Page:** `marble-50` with a very faint marble-vein SVG texture (≤3% opacity), plus a warm radial light in the hero.
+- **Page:** `marble-50` with a soft warm radial light from above (no tiled texture, which showed seams).
 - **Panel:** `ivory-0`, 1px `gold-500` border plus an inset hairline 4px inside (a double rule), and a 2px radius so the corners read as stone. Soft warm shadow: `0 1px 2px rgba(60,40,10,.06), 0 8px 24px rgba(60,40,10,.06)`.
 - **Hover:** the border gilds to `gold-600`, the shadow deepens, and the panel lifts 2px.
 - **Parchment:** About panel only.
