@@ -1,4 +1,5 @@
 // TODO(raymond): replace every placeholder in this file — see design/09-content-inventory.md.
+// SAMPLE CONTENT: realistic filler so the layout reads like the finished site.
 
 export const site = {
   name: "Raymond Tsai",
@@ -10,10 +11,12 @@ export const site = {
   // TODO(raymond): set the real domain once it exists.
   url: "https://example.com",
   email: "hello@example.com", // TODO(raymond)
-  now: "Placeholder: what you're working on or seeking right now (e.g. SWE internships, Summer 2027).",
+  /** Shows the "Sample content" pill. Set to false once everything is real. */
+  sampleContent: true,
+  now: "Software engineering co-op at Halcyon Systems this fall · seeking SWE internships for Summer 2027.",
   about: [
-    "Placeholder bio. I'm a computer science student at University Name who builds (the kind of software you love building). Replace this with three or four sentences in your own voice.",
-    "When I'm not writing code, I read history, mostly (your favorite period). Both teach the same lesson: systems outlive their builders, so build them well.",
+    "Currently a computer science student at Northfield University, I like building systems people rely on every day: real-time data pipelines, developer tools, and the occasional game.",
+    "I also study history, mostly the late Roman Republic. Both fields teach the same lesson: systems outlive their builders, so build them to be understood, maintained, and trusted.",
   ],
   socials: [
     { label: "GitHub", href: "https://github.com/RayTsai13" }, // TODO(raymond): confirm

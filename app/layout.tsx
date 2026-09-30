@@ -3,6 +3,7 @@ import { Cinzel, Cormorant_Garamond, EB_Garamond, JetBrains_Mono } from "next/fo
 import { Nav } from "@/components/nav/Nav";
 import { Footer } from "@/components/nav/Footer";
 import { NextTurnButton } from "@/components/nav/NextTurnButton";
+import { SampleBanner } from "@/components/nav/SampleBanner";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main">{children}</main>
         <Footer />
         <NextTurnButton />
+        {site.sampleContent && <SampleBanner />}
       </body>
     </html>
   );

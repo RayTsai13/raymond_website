@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -50,6 +51,14 @@ export default async function ProjectPage({ params }: Params) {
           </p>
           {project.tagline && <p className="mt-4 font-italic text-2xl italic text-ink-700">{project.tagline}</p>}
         </WonderReveal>
+
+        {project.cover && (
+          <FramedPanel className="mt-10 p-2 md:p-3">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-[1px]">
+              <Image src={project.cover} alt={`${project.title} screenshot`} fill priority sizes="(min-width: 1024px) 1000px, 100vw" className="object-cover" />
+            </div>
+          </FramedPanel>
+        )}
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[260px_1fr]">
           <aside>

@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { z } from "zod";
 import { experience as rawExperience } from "@/content/experience";
 import { hobbies as rawHobbies } from "@/content/hobbies";
+import { honors as rawHonors } from "@/content/honors";
 import { skills as rawSkills } from "@/content/skills";
 
 /* ── Schemas (design/08 → "Content model") ───────────────────────────────── */
@@ -56,9 +57,15 @@ export const skillSchema = z.object({
 
 export const hobbySchema = z.object({
   name: z.string(),
-  icon: z.enum(["owl", "amphora", "trireme", "quill", "column", "lyre"]),
+  icon: z.enum(["owl", "amphora", "trireme", "quill", "column", "lyre", "mountain", "helmet"]),
   line: z.string(),
   detail: z.string(),
+});
+
+export const honorSchema = z.object({
+  title: z.string(),
+  year: z.string(),
+  note: z.string().optional(),
 });
 
 export type ProjectMeta = z.infer<typeof projectSchema> & { slug: string };
@@ -69,6 +76,7 @@ export type Experience = z.infer<typeof experienceSchema>;
 export type Age = Experience["age"];
 export type Skill = z.infer<typeof skillSchema>;
 export type Hobby = z.infer<typeof hobbySchema>;
+export type Honor = z.infer<typeof honorSchema>;
 
 /* ── Loaders (build time) ────────────────────────────────────────────────── */
 
@@ -126,6 +134,10 @@ export function getSkills(): Skill[] {
 
 export function getHobbies(): Hobby[] {
   return rawHobbies.map((h, i) => parseOrThrow(hobbySchema, h, `content/hobbies.ts[${i}]`));
+}
+
+export function getHonors(): Honor[] {
+  return rawHonors.map((h, i) => parseOrThrow(honorSchema, h, `content/honors.ts[${i}]`));
 }
 
 /* ── Formatting helpers ──────────────────────────────────────────────────── */

@@ -25,6 +25,6 @@ The visitor lands on something that feels like the main menu of a grand strategy
 - [x] Design direction and specs (this folder)
 - [x] Decisions: Day theme only, experience first, abstract hero, no blog, no easter eggs, resume placeholder
 - [ ] Content collection (see 09)
-- [ ] Moodboard and static mockups (hero plus one project card)
-- [ ] Build: tokens, then components, then sections
+- [x] Sample content seeded (fictional, marked SAMPLE CONTENT; toggle the pill via `sampleContent` in content/site.ts)
+- [x] Build: tokens, then components, then sections
 - [ ] Polish: motion, accessibility audit, Lighthouse

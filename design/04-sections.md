@@ -216,7 +216,7 @@ THE FORUM
  ╚═══════════╝  ╚═══════════╝  ╚═══════════╝  ╚═══════════╝
 ```
 
-- 3–6 **"Pantheon" cards**. Each has a custom icon roundel, a name, and a one-liner. On hover or tap the card flips (or expands) to reveal a detail: a photo, a favorite book, a stat.
+- 3–6 **"Pantheon" cards**. Each has a custom icon roundel, a name, a one-liner, and a detail line (a favorite book, a stat). The detail is always visible; a hover-only reveal left the cards looking empty.
 - History gets special treatment with a **"Currently Reading"** card (book title plus author) and perhaps a "favorite period" line.
 - Optional: a "Civilization I'd play as" card. It's a fun wink for anyone who gets the reference.
 

@@ -1,20 +1,25 @@
 ---
-# TODO(raymond)
-title: "Codename Athena"
+# SAMPLE CONTENT
+title: "Athena"
 tier: great-work
 status: in-progress
 date: "2026-08"
-summary: "Placeholder: a machine-learning or research project in one line."
+summary: "Fine-tuning a small language model to estimate when an undated historical letter was written."
 impact:
-  - "Placeholder impact with a number"
-  - "Placeholder impact with a number"
-stack: ["Python", "PyTorch", "FastAPI"]
+  - "78% of held-out letters placed in the correct decade"
+  - "Research project with the Digital Humanities Lab"
+stack: ["Python", "PyTorch", "Hugging Face"]
 types: ["ml", "research"]
-role: "Researcher"
+role: "Undergraduate researcher"
+cover: "/samples/athena.svg"
 links:
   repo: "https://github.com/RayTsai13"
 ---
 
-## Overview
+## Question
 
-Placeholder write-up: problem, approach, results.
+Can a small model learn the drift of English spelling, vocabulary, and style closely enough to date a letter to within a decade?
+
+## Status
+
+This is ongoing work. So far the results beat a bag-of-words baseline by 19 points. Next comes calibration, because historians need to know when the model is unsure.

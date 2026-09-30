@@ -1,28 +1,29 @@
-// TODO(raymond): replace with your real hobbies. Icons: owl, amphora, trireme, quill, column, lyre.
+// TODO(raymond): replace with your real hobbies. Icons: owl, amphora, trireme, quill, column, lyre, mountain, helmet.
+// SAMPLE CONTENT
 
 export const hobbies = [
   {
     name: "History",
     icon: "owl",
-    line: "Currently reading: Book Title by Author.",
-    detail: "Favorite period: (e.g. the late Roman Republic). Placeholder.",
+    line: "Currently reading: SPQR by Mary Beard.",
+    detail: "Favorite period: the late Roman Republic, when the institutions strained and then broke.",
   },
   {
-    name: "Hobby Two",
-    icon: "trireme",
-    line: "One line about this hobby.",
-    detail: "A detail, favorite, or stat. Placeholder.",
+    name: "Rock Climbing",
+    icon: "mountain",
+    line: "Bouldering three times a week.",
+    detail: "Projecting my first V6. Climbing is debugging with your whole body.",
   },
   {
-    name: "Hobby Three",
-    icon: "lyre",
-    line: "One line about this hobby.",
-    detail: "A detail, favorite, or stat. Placeholder.",
+    name: "Chess",
+    icon: "column",
+    line: "Rapid player, around 1650 online.",
+    detail: "Favorite opening: the Queen's Gambit, a classic for a reason.",
   },
   {
     name: "Strategy Games",
-    icon: "column",
-    line: "Civilization I'd play as: (your pick).",
-    detail: "A detail, favorite, or stat. Placeholder.",
+    icon: "helmet",
+    line: "Civilization I'd play as: Rome, obviously.",
+    detail: "Hundreds of hours across Civ, Imperator, and Crusader Kings. Research for this site.",
   },
 ];

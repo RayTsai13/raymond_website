@@ -1,8 +1,8 @@
 import { BannerHeader, FramedPanel } from "@/components/frame";
-import { Rosette } from "@/components/ornaments";
+import { Laurel, Rosette } from "@/components/ornaments";
 import { Reveal, SectionHeading, TechTags } from "@/components/ui";
 import { sections } from "@/content/site";
-import { formatRange, getExperience, type Age, type Experience as Entry } from "@/lib/content";
+import { formatRange, getExperience, getHonors, type Age, type Experience as Entry } from "@/lib/content";
 import { cn } from "@/lib/cn";
 import { TimelineRail } from "./TimelineRail";
 
@@ -66,6 +66,8 @@ export function Experience() {
             );
           })}
         </TimelineRail>
+
+        <Honors />
       </div>
     </section>
   );
@@ -108,5 +110,34 @@ function TimelineEntry({ entry, side }: { entry: Entry; side: "left" | "right" }
         </div>
       </Reveal>
     </li>
+  );
+}
+
+/** "Great People earned": awards and achievements as laurel badges beneath the timeline. */
+function Honors() {
+  const honors = getHonors();
+  if (!honors.length) return null;
+  return (
+    <Reveal className="mt-16">
+      <h3 className="label text-center text-ink-500">Honors &amp; Achievements</h3>
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {honors.map((h) => (
+          <li key={h.title}>
+            <FramedPanel className="h-full p-4">
+              <div className="flex items-center gap-4">
+              <Laurel className="h-12 w-12 shrink-0 text-gold-500" leaves={7} />
+              <div>
+                <p className="font-display text-sm font-semibold uppercase tracking-[0.06em] text-ink-900">{h.title}</p>
+                <p className="font-mono text-[0.7rem] uppercase tracking-wide text-ink-500">
+                  {h.year}
+                  {h.note && <> · {h.note}</>}
+                </p>
+              </div>
+              </div>
+            </FramedPanel>
+          </li>
+        ))}
+      </ul>
+    </Reveal>
   );
 }
