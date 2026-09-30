@@ -60,9 +60,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${cinzel.variable} ${ebGaramond.variable} ${cormorant.variable} ${jetbrains.variable}`}
     >
       <body className="min-h-dvh">
-        <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important}[data-reveal-draw]{transform:none!important}`}</style>
-        </noscript>
         <a
           href="#main"
           className="label sr-only z-[100] bg-lapis-800 px-4 py-2 text-gold-300 focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

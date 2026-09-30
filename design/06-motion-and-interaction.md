@@ -29,7 +29,8 @@ On later client-side navigations back to home, skip it and show the final state.
 - The section eyebrow and title fade up 12px (`standard`)
 - The meander divider **draws from center outward** (scaleX 0 → 1)
 - Cards stagger in (40ms apart, max 6 staggered, the rest appear together)
-- Triggers once at 20% visibility (IntersectionObserver). No reverse on scroll-up.
+- Triggers once as the element enters the viewport (IntersectionObserver). No reverse on scroll-up.
+- **Fail-safe:** content renders visible. Only elements still below the fold once JS runs are hidden and then revealed. If JS fails or is off, nothing is ever hidden.
 
 ### Frame gilding (hover on interactive panels)
 - The border animates from bronze to gold. A soft **light sweep** travels across the border once (a masked linear-gradient animating `background-position`, 600ms).

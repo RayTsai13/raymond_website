@@ -80,7 +80,7 @@ function TimelineEntry({ entry, side }: { entry: Entry; side: "left" | "right" }
         {/* node on the rail */}
         <span
           aria-hidden
-          className="absolute left-5 top-6 z-10 grid h-7 w-7 -translate-x-1/2 place-items-center rounded-full border border-stone-300 bg-ivory-0 text-stone-300 transition-colors duration-500 group-data-[shown]:border-gold-600 group-data-[shown]:text-gold-600 md:left-1/2"
+          className="absolute left-5 top-6 z-10 grid h-7 w-7 -translate-x-1/2 place-items-center rounded-full border border-stone-300 bg-ivory-0 text-stone-300 transition-colors duration-500 group-data-[reveal=shown]:border-gold-600 group-data-[reveal=shown]:text-gold-600 md:left-1/2"
         >
           <Rosette />
           {entry.current && (
