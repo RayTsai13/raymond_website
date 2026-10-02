@@ -23,8 +23,23 @@ The visitor lands on something that feels like the main menu of a grand strategy
 ## Status
 
 - [x] Design direction and specs (this folder)
-- [x] Decisions: Day theme only, experience first, abstract hero, no blog, no easter eggs, resume placeholder
-- [ ] Content collection (see 09)
-- [x] Sample content seeded (fictional, marked SAMPLE CONTENT; toggle the pill via `sampleContent` in content/site.ts)
-- [x] Build: tokens, then components, then sections
-- [ ] Polish: motion, accessibility audit, Lighthouse
+- [x] Decisions: Day theme only, experience first, abstract hero, no blog, no easter eggs, résumé placeholder (see 09)
+- [x] Build: tokens, components, every section and page (see 08)
+- [x] Sample content seeded: fictional, marked `SAMPLE CONTENT`. The label toggles via `sampleContent` in `content/site.ts`.
+- [x] Copy toned down: themed visuals, plain text (see 01, "Tone of voice")
+- [x] Polish: motion, reduced motion, accessibility pass, Lighthouse (Accessibility/Best Practices/SEO 100, Performance 91–92; see 07)
+- [ ] Real content (checklist in 09)
+- [ ] Performance: reach the ≥ 95 target (simulated LCP gap, see 07)
+- [ ] Deploy (AWS)
+
+## Planned in these specs but not built
+
+These specs describe the full design intent. A few pieces were deliberately left out or simplified. Each is noted where it appears:
+
+- Section rail (I–V roundels on wide screens). The nav's scroll-spy and Next Turn cover it.
+- Org logos on experience cards, and links from skills to the projects that used them
+- A sort control on `/projects` (it's ordered by tier, then date)
+- The traveling light sweep on panel hover, and the sequenced edge animation in the tech tree
+- Light/dark theme toggle and sound (out of scope)
+
+For how to run, edit, and deploy the site, see the root [`README.md`](../README.md).

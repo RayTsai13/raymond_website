@@ -11,6 +11,7 @@ Wireframes are schematic. `[ ]` are buttons, `( )` are medallions and roundels, 
 ```
           ~ sunlit marble; huge gold Antikythera rings slowly turning behind ~
 
+                               WELCOME
                               ╭─── laurel ───╮
                              (   PORTRAIT    )
                               ╰──────────────╯
@@ -21,11 +22,11 @@ Wireframes are schematic. `[ ]` are buttons, `( )` are medallions and roundels, 
                               the old ones fell."
 
                        ╔═══════════════════════════╗
-                       ║   BEGIN: THE AGES         ║   ← primary (experience)
+                       ║   BEGIN · THE AGES        ║   ← primary (experience)
                        ╠═══════════════════════════╣
                        ║   THE GREAT WORKS         ║
-                       ║   RÉSUMÉ     ║
-                       ║   GET IN TOUCH           ║
+                       ║   RÉSUMÉ                  ║
+                       ║   GET IN TOUCH            ║
                        ╚═══════════════════════════╝
 
                   (gh)  (in)  (✉)            ⌄ scroll
@@ -36,7 +37,8 @@ Wireframes are schematic. `[ ]` are buttons, `( )` are medallions and roundels, 
 - Buttons use `MenuButton` (see 05). Hovering slides a gold bar in from the left, like a game menu selection.
 - Background: the **Antikythera mechanism** SVG (see 02). It is gold line-art rings, oversized and centered behind the medallion, partly cropped by the viewport, with a warm radial light from the top. The rings draw in on load and then rotate slowly.
 - Social icons sit in small gold-bordered roundels.
-- **Mobile:** same stack. The portrait shrinks to 120px, and the menu becomes full-width buttons.
+- **Mobile:** same stack, with the menu at full width.
+- The portrait is a `TODO`: until a photo is added, the medallion holds an "RT" monogram.
 
 ## 0.5 About
 
@@ -95,10 +97,10 @@ THE AGES
 
 - The vertical rail is a thin gold line topped and based with **Ionic column capitals**. Nodes are rosettes.
 - Entries alternate left and right on desktop. On mobile they sit in a single column with the rail on the left.
-- The rail **draws itself** as you scroll (stroke-dashoffset tied to scroll progress).
-- Each entry is an `ExperienceCard`: logo roundel, org, title, dates (mono), location, 2–4 impact bullets, and tech tags.
+- The rail **draws itself** as you scroll (a gold line scaled by scroll progress). Each node turns gold as its entry appears.
+- Each entry is a framed card: org, title, dates (mono), location, 2–4 impact bullets, and tech tags. Org logos were planned but aren't implemented.
 - **Assigning Ages** is a creative choice. Suggested split: *Antiquity* = education, clubs, and first projects. *Exploration* = internships, research, TA work, and hackathons. *Modern* = the current or most recent role, plus what's next.
-- An optional **"Honors & Achievements"** strip sits beneath (awards, hackathon wins, scholarships), styled as small laurel badges called "Great People earned".
+- An **"Honors & Achievements"** strip sits beneath (awards, hackathon wins, scholarships, papers) as small laurel badges, four across. Content is in `content/honors.ts`.
 
 ---
 
@@ -140,23 +142,23 @@ THE GREAT WORKS
 ### `/projects`: "The Archive"
 
 - A filter bar with gold-outline chips: **Type** (Web, Systems, ML, Research, Game, Tooling) and **Tech** (languages and frameworks).
-- A responsive grid of `ProjectCard`s, sortable by date or tier.
+- A responsive grid of `ProjectCard`s, ordered by tier and then newest first. The Wonder spans the full width when no filter is active. (A sort control was not built.)
 
 ### `/projects/[slug]`: Wonder page
 
 ```
 ┌── banner ─────────────────────────────────────────────┐
 │  ★ WONDER COMPLETED                                   │
-│  PROJECT NAME                              APR 2025    │
+│  PROJECT NAME                              APR 2025   │
 │  Tagline in italic                                    │
 └───────────────────────────────────────────────────────┘
 [ hero screenshot in gold frame ]
 
-╔ SIDEBAR ═══════╗   Body (MDX): Problem → Approach →
-║ ROLE           ║   Architecture (diagram) → Challenges →
-║ TIMELINE       ║   Results → What I'd do differently
+╔ SIDEBAR ═══════╗   Summary (drop cap) + impact bullets
+║ STATUS         ║   Body (MDX): Problem → Approach →
+║ ROLE           ║   Challenges → Results →
+║ TEAM           ║   What I'd do differently
 ║ STACK          ║
-║ TEAM SIZE      ║
 ║ LINKS          ║
 ╚════════════════╝
          ← PREVIOUS WORK        NEXT WORK →
@@ -192,7 +194,7 @@ THE TECH TREE
 
 - Columns act like "eras": **Foundations**, then **Systems / Frameworks**, then **Specialties**.
 - Node states: **Mastered** (solid gold border, lit icon), **Proficient** (bronze border), and **Researching** (dashed border with a small progress ring for what he's learning now). This replaces the usual meaningless skill-percentage bars with something honest.
-- Hovering or focusing a node highlights its prerequisite path in gold and shows a **framed tooltip**: years of use, and which projects used it (linked).
+- Hovering or focusing a node highlights its prerequisite path in gold and shows a **dark framed tooltip**: state, note, what it builds on, and what it unlocks. (Linking skills to projects was planned but isn't built.)
 - **Mobile:** the tree collapses into grouped lists per column, with connectors hidden. Each item keeps its state badge.
 - **Accessible fallback:** the tree is built from real lists (`<ul>` per column) with `aria-describedby` for prerequisites. The SVG lines are decorative.
 
@@ -208,7 +210,7 @@ OFF THE CLOCK
 ─── meander ───
 
  ╔═══════════╗  ╔═══════════╗  ╔═══════════╗  ╔═══════════╗
- ║  (owl)    ║  ║ (amphora) ║  ║ (trireme) ║  ║  (quill)  ║
+ ║  (owl)    ║  ║(mountain) ║  ║ (column)  ║  ║ (helmet)  ║
  ║  HISTORY  ║  ║  [HOBBY]  ║  ║  [HOBBY]  ║  ║  [HOBBY]  ║
  ║ "Currently║  ║  one line ║  ║  one line ║  ║  one line ║
  ║  reading: ║  ║           ║  ║           ║  ║           ║
@@ -216,7 +218,7 @@ OFF THE CLOCK
  ╚═══════════╝  ╚═══════════╝  ╚═══════════╝  ╚═══════════╝
 ```
 
-- 3–6 **"Pantheon" cards**. Each has a custom icon roundel, a name, a one-liner, and a detail line (a favorite book, a stat). The detail is always visible; a hover-only reveal left the cards looking empty.
+- 3–6 hobby cards. Each has a custom icon roundel, a name, a one-liner, and a detail line (a favorite book, a stat). The detail is always visible; a hover-only reveal left the cards looking empty.
 - History gets special treatment with a **"Currently Reading"** card (book title plus author) and perhaps a "favorite period" line.
 - Optional: a "Civilization I'd play as" card. It's a fun wink for anyone who gets the reference.
 
@@ -233,8 +235,7 @@ GET IN TOUCH
  ║   Open to [internships / full-time roles / collabs]. ║
  ║   The fastest route is email.                        ║
  ║                                                      ║
- ║   [ ✉  GET IN TOUCH ]   ← mailto, primary           ║
- ║   [ ⬇  DOWNLOAD RÉSUMÉ (PDF) ]            ║
+ ║   [ ✉  EMAIL ME ]   [ RÉSUMÉ ]  ← mailto + résumé page ║
  ║                                                      ║
  ║   (gh) GitHub   (in) LinkedIn   (✉) email@...        ║
  ╚══════════════════════════════════════════════════════╝

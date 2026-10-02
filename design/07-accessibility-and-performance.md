@@ -21,7 +21,7 @@ A themed site is only impressive if it's also fast and usable. Recruiters and en
 - A skip link ("Skip to content") is styled as a small gold banner on focus.
 
 ### Keyboard
-- Everything that works on hover also works on focus (tooltips, tech tree highlights, hobby card flips).
+- Everything that works on hover also works on focus (tech tree tooltips and highlights, card states).
 - The mobile menu traps focus while open. Esc closes it and returns focus to the trigger.
 - Wonder reveal: any key skips it.
 - The Next Turn button is reachable and labeled with its destination.
@@ -39,17 +39,30 @@ A themed site is only impressive if it's also fast and usable. Recruiters and en
 | CLS | < 0.05 |
 | INP | < 150ms |
 | JS shipped (home, gzipped) | < 120 KB |
-| Total home page weight | < 1 MB (including hero image) |
+| Total home page weight | < 1 MB |
 
 ### Tactics
 - **Fonts:** self-host via `next/font`, subset to Latin, and limit weights (Cinzel 500/600, EB Garamond 400/400i/600, JetBrains Mono 400). Use `display: swap` with size-adjusted fallbacks to avoid layout shift.
-- **Textures:** inline SVG noise (`feTurbulence`) or a single tiny tiled PNG under 10 KB. No large texture images.
-- **Ornaments:** one SVG sprite (`<symbol>` + `<use>`), not dozens of separate files.
+- **Textures:** only the parchment panel uses a small inline SVG noise texture. The page background is a CSS gradient (a tiled marble texture was dropped because it showed seams).
+- **Ornaments:** inline SVG React components, with no image requests. The meander band is a tiny data-URI background.
 - **Hero art:** the Antikythera SVG is inline, so it costs no image request. Rotation uses CSS `transform` only (compositor-friendly).
-- **Motion library:** Framer Motion (`motion`) is lazy-loaded and used only where CSS can't do the job. Prefer CSS transitions, and scroll-driven animations where supported.
-- **Tech tree:** render lines as one SVG, computed at build time where possible.
+- **Motion:** CSS only. No animation library ships.
+- **Tech tree:** edges are one SVG, measured from the DOM on the client (with ResizeObserver), so they follow the real layout.
 - **Static generation** for every route, with no client data fetching.
 - **Images:** `next/image` with explicit sizes for project thumbnails.
+
+### Measured results (production build, Lighthouse mobile, 2026-09-30)
+
+| Category | Score |
+|---|---|
+| Performance | 91–92 |
+| Accessibility | 100 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+- CLS **0**, Total Blocking Time ~20 ms. Text contrast was checked against every token pair in use, and all pass AA.
+- **Gap:** Lighthouse's simulated LCP is ~3.4s on throttled 4G (target < 2.0s), even though the real render delay is under 100 ms. The hero name was changed to a transform-only rise so it paints immediately. Disabling preload on the non-critical fonts made no difference, so it was reverted. Next things to try: fewer font files (drop Cormorant and use EB Garamond italic), and checking the CSS/JS critical path.
+- Verified: the full page renders with JavaScript disabled, all animations respect reduced motion, there's no horizontal scroll at 390px, and keyboard tab order follows the visual order.
 
 ## SEO & sharing
 

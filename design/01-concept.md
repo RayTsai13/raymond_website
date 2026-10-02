@@ -16,6 +16,7 @@ Civilization VII is the right reference because it already solved the hard probl
 4. **Antiquity meets the terminal.** Classical serif display type sits beside a monospace face for technical details (stacks, dates, metrics). The contrast between the two tells the engineer + historian story.
 5. **Game-like, not a game.** Borrow the feel: menus, banners, turn progression, tech tree. Keep standard web conventions: scrolling, links, a back button that works, text you can select.
 6. **Fast and quiet.** No autoplay audio, no loading screens, no scroll-jacking. Textures are subtle and light.
+7. **Never hide content behind an effect.** Animations decorate content that is already there. If JS or motion is off, everything is still visible.
 
 ## What to borrow from Civ VII's UI
 
@@ -30,8 +31,8 @@ Civilization VII is the right reference because it already solved the hard probl
 | **Tech tree** with connected nodes | Skills visualization |
 | **Wonders** and their completion splash | Featured projects and the project detail "reveal" |
 | The **Next Turn** button in the corner | Floating "next section" button |
-| Tooltips with rich, framed content | Hover detail on skills, tech tags, and dates |
-| Painterly, softly lit backgrounds | Hero backdrop (original art or a public-domain painting) |
+| Tooltips with rich, framed content | Dark hover tooltips on tech tree skills |
+| Softly lit, monumental backdrops | The abstract gold "Antikythera mechanism" hero on sunlit marble |
 
 ## What *not* to borrow
 

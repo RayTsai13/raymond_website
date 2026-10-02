@@ -122,7 +122,7 @@ The hero art is an abstract **gold line-art orrery / astrolabe**: concentric rin
 
 ## Iconography
 - Utility icons come from Lucide (1.5px stroke), in `ink-700` or `gold-800`.
-- Themed icons (owl, amphora, trireme, quill, column, scroll) are custom gold line art in a roundel.
+- Themed hobby emblems (owl, amphora, trireme, quill, column, lyre, mountain, helmet) are custom gold line art in a roundel (`components/ornaments/Emblems.tsx`).
 - Tech names appear as mono text tags, not colored brand logos.
 
 ## Imagery

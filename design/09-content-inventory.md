@@ -2,49 +2,50 @@
 
 The design is only as good as what goes in it. Here's what Raymond needs to gather.
 
+**Current state:** every section is filled with fictional **sample content** so the layout can be judged. It's marked `SAMPLE CONTENT` / `TODO(raymond)` in the source, and a "Sample content" label shows while `sampleContent: true` in `content/site.ts`. Each item below says which file it goes in. The root `README.md` covers the project front matter format.
+
 ## Content checklist
 
 ### Identity
-- [ ] Full name as it should appear (and whether to include a middle name or initial)
+- [ ] Full name as it should appear (`content/site.ts`) (and whether to include a middle name or initial)
 - [ ] One-line role: e.g. "Software Engineer · CS Student at ___"
 - [ ] Hero tagline (draft: *"Building systems that last, and studying why the old ones fell."*)
-- [ ] Portrait photo (square, well-lit, ≥ 800px)
+- [ ] Portrait photo (square, well-lit, ≥ 800px). It replaces the monogram in `components/sections/Hero.tsx`.
 - [ ] 3–4 sentence bio for the About section
 - [ ] "NOW" line: current status or what he's seeking, with timeframe
-- [ ] Links: GitHub, LinkedIn, email, and any others
-- [ ] Resume PDF
+- [ ] Links: GitHub (confirm `RayTsai13`), LinkedIn, email, and the site domain
+- [ ] Résumé PDF: put it at `public/resume.pdf`, then enable the download button in `app/resume/page.tsx`
 
-### Projects (for each)
+### Projects (for each) → `content/projects/<slug>.mdx`
 - [ ] Title, one-line summary, date
 - [ ] Tier: which one is the **Wonder**, and which 2–3 are **Great Works**
 - [ ] 2–3 impact bullets with numbers where possible (users, performance, scale, grades, awards)
 - [ ] Tech stack
 - [ ] Links: repo, live demo, write-up
-- [ ] Cover screenshot (16:9) and optionally a short screen recording
+- [ ] Cover screenshot (16:9) in `public/`, referenced by `cover:`
 - [ ] For the Wonder (and ideally Great Works): a longer write-up covering Problem → Approach → Architecture → Challenges → Results → Lessons
 
-### Experience (for each)
+### Experience (for each) → `content/experience.ts`
 - [ ] Org, role, dates, location
 - [ ] 2–4 impact bullets
 - [ ] Stack
-- [ ] Logo (SVG preferred)
 - [ ] Which **Age** it belongs to (or accept the default split in 04)
 
 ### Education
 - [ ] University, degree, minor (History?), expected graduation
 - [ ] Relevant coursework (5–8), GPA if you want to show it, honors
 
-### Skills
+### Skills → `content/skills.ts`
 - [ ] List of languages, frameworks, tools, and concepts
 - [ ] For each: mastered, proficient, or researching
 - [ ] Rough prerequisite relationships (drafted from the list if needed)
 
-### Hobbies
+### Hobbies → `content/hobbies.ts`
 - [ ] 3–6 hobbies with a one-liner each
 - [ ] History specifics: favorite period, currently reading, favorite historical figure
 - [ ] Optional photos
 
-### Extras
+### Honors → `content/honors.ts`
 - [ ] Awards, hackathons, scholarships, publications
 
 ---
@@ -59,3 +60,8 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 6. **Hosting:** AWS eventually. Keep the Docker build working and defer deployment.
 7. **Easter eggs:** off.
 8. **Resume:** placeholder page at `/resume` for now.
+
+## Later decisions
+
+- **2026-10-02, copy tone:** the theme is visual only. Site text stays plain English: no Latin, no Roman-numeral dates, and no roleplay wording (see 01, "Tone of voice").
+- **2026-10-02, branches:** work happens directly on `main`.

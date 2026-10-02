@@ -1,136 +1,140 @@
 # 05: Components
 
-Each component lists **anatomy**, **variants**, and **states**. Token names refer to 02 and are defined in code per 08.
+Each component lists **anatomy**, **variants**, and **states**. Token names refer to 02 and are defined in `app/globals.css`. File paths point to the implementation.
 
 ---
 
-## `FramedPanel`
+## `FramedPanel` (`components/frame`)
 
 The base container that gives everything its Civ-like feel.
 
 **Anatomy**
-- Surface: `ivory-0` + faint marble texture + soft warm shadow
-- Border: 1px `gold-500`, with a second inset border 4px inside at `gold-500/40%` (double-rule frame)
-- Corners: optional 32px SVG filigree in each corner, overlapping the border
-- Padding: 24px mobile / 32px desktop
-- Radius: **2px** (nearly square, like stone. Avoid rounded "app" corners)
+- Surface: `ivory-0` with a soft warm shadow (`--shadow-panel`)
+- Border: 1px `gold-500`, plus an inset hairline 4px inside at ~35% opacity (the double-rule frame)
+- Corners: 32px SVG filigree on the `ornate` variant only
+- Radius: **2px** (`rounded-stone`), nearly square like cut stone. No rounded "app" corners.
+- Children are wrapped in an inner `div.relative`. Put layout classes (flex, grid) on your own inner wrapper, not on the panel.
 
 **Variants**
-| Variant | Difference |
-|---|---|
-| `plain` | Single border, no corners (most cards) |
-| `ornate` | Double rule + corner filigree (hero menu, Wonder card, contact) |
-| `parchment` | Parchment surface, ink text, bronze border (About) |
-| `banner` | Adds a `BannerHeader` overlapping the top edge |
+| Variant | Difference | Used for |
+|---|---|---|
+| `plain` | Ivory, `gold-500/70` border, no corners | Most cards |
+| `ornate` | Full gold border + corner filigree | Hero menu, Wonder card, contact, résumé, mobile menu |
+| `parchment` | Parchment texture, bronze border | About (the only parchment surface) |
+| `dark` | `lapis-800` fill, gold text | Reserved for Civ-style dark accents |
 
-**States:** interactive panels on hover move the border from `gold-500` to `gold-600`, deepen the shadow, and lift by 2px.
-
----
-
-## `BannerHeader`
-
-A ribbon-shaped header strip.
-
-- Shape: horizontal band with swallowtail notches cut into both ends (CSS `clip-path` or SVG)
-- Fill: `marble-100` (or `lapis-800` with `gold-300` text for the Wonder banner), with a gold hairline top and bottom
-- Text: `label` or `display-md` Cinzel, centered, `gold-500`
-- Use for: card headers on the Wonder card, Age headers in the timeline, the "Wonder Completed" banner
+**States:** with `interactive`, hover lifts the panel 2px, deepens the shadow (`--shadow-panel-lift`), and gilds the border to `gold-600`. `focus-within` gilds it as well.
 
 ---
 
-## `SectionHeading`
+## `BannerHeader` (`components/frame`)
+
+A ribbon strip with swallowtail notches cut into both ends (CSS `clip-path`) and gold hairlines top and bottom.
+
+- `tone="light"`: `marble-100` fill, `gold-800` text. Used for the Age headers in the timeline.
+- `tone="dark"`: `lapis-800` fill, `gold-300` text. Used for the "Wonder Completed" banner.
+
+---
+
+## `SectionHeading` (`components/ui`)
 
 ```
-       III  ·  SKILLS              ← eyebrow: label, stone-400, numeral in gold
-       THE TECH TREE               ← display-lg, Cinzel, marble-50
-  ───────◆ meander ◆───────        ← Divider (meander variant)
-   Optional one-line intro         ← body-lg, marble-300, max 60ch
+       III  ·  SKILLS              ← eyebrow: label, ink-500, numeral in gold-800
+       THE TECH TREE               ← Cinzel caps, ink-900
+  ───────◆ meander ◆───────        ← Divider (meander), draws out on reveal
+   Optional one-line intro         ← body-lg, ink-700, max 60ch
 ```
 
-- Centered on the home page, left-aligned on inner pages.
-- The `h2` holds the plain label for SEO and screen readers. The themed title is visually primary but grouped with it in the same heading. For example: `<h2><span class="eyebrow">III · Skills</span> The Tech Tree</h2>`.
+- Centered by default; `align="left"` is also available.
+- One `h2` contains both the plain label and the themed title, with a screen-reader-only ": " between them. The accessible name reads "III. Skills: The Tech Tree".
 
 ---
 
-## `MenuButton` (hero menu, mobile menu)
+## `MenuButton` (`components/ui`)
 
-Full-width stacked buttons, like a game main menu.
+Full-width stacked menu items, like a game main menu (hero menu and mobile menu).
 
-- Rest: transparent, Cinzel `label` at 16px, `marble-50`, divided by gold-700 hairlines
-- Hover/focus: a gold bar (3px) slides in from the left, the text shifts 8px right and turns `gold-300`, and a faint gradient sweep appears (`gold-500/10% → transparent`)
-- Active (pressed): the text dims a little and the bar stays
-- The `primary` variant is lit by default: gold text plus a small rosette on the left
+- Rest: Cinzel caps, `ink-900`, separated by `gold-500/30` hairlines
+- Hover/focus: a 3px `gold-600` bar grows in on the left, a `gold-300` gradient sweeps across, a rosette fades in, the text shifts right 4px and turns `gold-800`
+- `primary`: lit by default (gold text, bar and rosette visible)
 
-## `Button`
+## Buttons: `ButtonLink` / `buttonClass` (`components/ui`)
+
+`ButtonLink` renders a Next `<Link>` for internal paths and an `<a>` otherwise. `buttonClass()` gives the same styles to a `<button>`.
 
 | Variant | Look |
 |---|---|
-| `primary` | Gold gradient fill, `ink-900` text, Cinzel label, 2px radius, gold-300 1px outline on hover |
-| `secondary` | Transparent, 1px `gold-500` border, gold text; hover fills `gold-500/10%` |
-| `ghost` | Text only with a gold underline that draws in on hover |
-| `icon` | 40px roundel, bronze border, gold icon; hover goes to gold border and glow |
+| `primary` | Gold gradient fill, `ink-900` text, Cinzel label, `gold-600` border |
+| `secondary` | Translucent ivory, `gold-600` border, `gold-800` text; hover tints `gold-300` |
+| `ghost` | `gold-800` text, underline appears on hover |
 
-Sizes: `sm` 32px, `md` 44px (default, which is also the touch target minimum), `lg` 56px.
-
----
-
-## `NextTurnButton`
-
-The signature floating control.
-
-- A 72px circle fixed bottom-right (24px inset), with a gold gradient ring, `ivory-0` center, and a laurel ornament around it
-- Label "NEXT TURN" in Cinzel 11px wrapped around the circle (SVG `textPath`), with a chevron glyph in the center
-- A subtle "breathing" glow every 6s while idle (off with reduced motion)
-- Click scrolls to the next section anchor. On the last section the chevron flips up and the label becomes "RETURN"
-- Hidden on the hero until the user scrolls 40% of the viewport, so it doesn't compete with the menu
-- Mobile: 56px, with the circular text dropped and a chevron plus `aria-label` kept
-- `aria-label="Next section: Experience"` (updates dynamically)
+Sizes: `sm` 32px, `md` 44px (default, which is the minimum touch target), `lg` 56px. Round icon links (social, repo, live) are styled inline where they're used: a 36–40px circle with a gold border.
 
 ---
 
-## `ProjectCard`
+## `NextTurnButton` (`components/nav`)
 
-**Anatomy:** thumbnail (16:9, gold 1px frame, duotone at rest) → tier badge → title (`display-md`) → description (`body-sm`, 2-line clamp) → tags (`TechTag` list) → footer links (icon buttons) + `StatusPill`.
+The signature floating control, shown on the home page only.
 
-**Variants:** `wonder` (horizontal, ornate panel, impact bullets, Tyrian badge with laurel), `great-work` (vertical, plain panel), `compact` (archive list row).
+- A circle fixed bottom-right (56px mobile, 76px desktop) with a gold gradient ring and ivory center, plus a chevron in the middle
+- Desktop: "NEXT TURN · NEXT TURN" wraps the circle (SVG `textPath`); hover rotates it 15°
+- Idle "breathing" glow every 6s (off under reduced motion)
+- Click scrolls to the next section. A small dark tag briefly shows the destination name
+- On the last section (or at the page bottom) the chevron flips and the label becomes "RETURN", which scrolls to the top
+- Hidden until the visitor scrolls 40% of the viewport. `aria-label` updates to "Next section: …" / "Return to top"
 
-**States:** hover lifts the card, restores the thumbnail to full color, gilds the border, and slides an arrow in next to the title. The whole card is one link (to the detail page). Secondary links (repo, live) are separate focusable elements layered above it.
+---
 
-## `ExperienceCard`
+## Project cards (`components/projects/ProjectCard.tsx`)
 
-Anatomy: logo roundel (48px, monochrome gold) → org name (Cinzel `label` 14px, gold) → role (`display-md` small, 24px) → meta line (mono: `JUN 2025 — AUG 2025 · SEATTLE, WA`) → bullets (rosette markers) → tech tags.
+**`WonderCard`** (the one flagship): an ornate panel, laid out horizontally on desktop. It shows the cover, a Tyrian "Wonder" badge with laurel, a `StatusPill`, the title, a summary, impact bullets, `TechTags`, "View the Wonder →", and repo/live/write-up icon links.
 
-## `TechTag`
+**`ProjectCard`** (Great Works and Works): a plain panel, vertical. It shows the cover, a tier label, a `StatusPill`, the title, a 2-line summary, up to 4 tags, and icon links.
 
-A mono 13px uppercase label with `gold-700` border and `gold-300` text, 2px radius, 4×8px padding. Tags are separated by gap, and in dense places they're joined by interpuncts instead of drawn as chips.
+- **Cover:** a 16:9 image in a gold frame, slightly warm and desaturated at rest and full color on hover. Without a `cover`, an ornamental "coin" plate shows the project's initial.
+- The **whole card is one link** to the project page (a stretched link on the title). Repo/live links sit above it as separate focusable elements.
+- Hover lifts the card, gilds the frame, and slides an arrow in next to the title.
 
-## `StatusPill`
+## Timeline entry (`components/sections/Experience.tsx`)
 
-A small caps label with a colored dot: `LIVE` (verdigris), `SHIPPED` (gold), `IN PROGRESS` (lapis, animated dot), `ARCHIVED` (stone).
+An interactive plain panel: org (`label`, `gold-800`) → role (Cinzel, 20–24px) → meta line (mono: `JUN 2025 — SEP 2025 · SAN FRANCISCO, CA`) → rosette bullets → tech tags. The current role adds a "You are here" marker and a pulsing ring on its rail node. Rail nodes turn from stone to gold when their entry reveals. (Org logos from the original spec aren't implemented.)
 
-## `TechNode` (skills tree)
+## Honors badge (`components/sections/Experience.tsx`)
 
-- A 160×56 box with an icon roundel on the left and the name (Cinzel 14px) on the right
-- States: `mastered`, `proficient`, `researching` (see 04). There's also a `highlighted` state, used when it's on the hovered path
-- A tooltip on hover or focus shows a `FramedPanel` popover with years, contexts, and linked projects
+A small plain panel with a laurel, the title (Cinzel caps), and a mono line for year and note. Badges sit four across beneath the timeline.
 
-## `Tooltip`
+## `TechTag` / `TechTags` / `StatusPill` (`components/ui`)
 
-A compact `FramedPanel` (plain) with a 6px gold arrow. It appears after 150ms and follows the Civ pattern of a title row in gold Cinzel plus body text. On touch devices it opens on tap and closes on outside tap.
+- **TechTag:** mono 11–12px uppercase, `ink-700` on `marble-50`, `gold-500/60` border, 2px radius. `TechTags` renders a labelled list.
+- **StatusPill:** a small caps label with a colored dot: `LIVE` (verdigris), `SHIPPED` (gold), `IN PROGRESS` (lapis, pulsing), `ARCHIVED` (ink-500).
 
-## `Divider`
+## `TechTree` and its nodes (`components/skills/TechTree.tsx`)
 
-Variants: `hairline` (1px gold-700 gradient fade at both ends), `meander` (Greek key band, 10px), `rosette` (hairline with a centered rosette), `laurel` (small laurel sprig centered).
+- Three columns (Foundations → Systems & Frameworks → Specialties), each a real `<ul>`. Nodes are `<button>`s with an abbreviation roundel, the name, and the state plus years.
+- States: **mastered** (2px `gold-600` border, gilded roundel), **proficient** (bronze hairline), **researching** (dashed gold border plus a slow spinner). A legend sits below.
+- Edges are SVG béziers measured from the DOM (desktop only). Same-column prerequisites draw a short vertical link.
+- Hovering or focusing a node highlights it and all its prerequisites, dims the rest, and opens a **dark Civ-style tooltip** (`lapis-800`, gold text) showing the state, a note, "Builds on", and "Unlocks". Esc closes it.
 
-## `Medallion`
+## `Divider` (`components/frame`)
 
-A circular image frame: gold gradient ring (4px) + inner bronze hairline + optional laurel wreath SVG around it. Sizes: 48 / 96 / 200 (hero). Used for the portrait, logos, and hobby icons.
+Variants: `hairline` (gold gradient fading at both ends), `meander` (Greek key band between two fading hairlines), `rosette`, `laurel`. `draw` makes it scale out from the center when its `Reveal` parent appears.
 
-## `Nav` / `MobileMenu`
+## `Medallion` (`components/frame`)
 
-See 03 for behavior. The mobile menu reuses `FramedPanel ornate` and `MenuButton`.
+A circular frame with a gold gradient ring, a bronze hairline, and an optional laurel wreath around it. The hero uses it at 124px with a laurel, holding the monogram placeholder until a portrait is added.
 
-## `Toast`
+## `Reveal` (`components/ui/Reveal.tsx`)
 
-A bottom-center small framed panel, used for "Email copied". It auto-dismisses after 3s and is announced via `aria-live="polite"`.
+The scroll-in wrapper. It is **fail-safe**: content renders visible, and only elements still below the fold once JS runs are set to `data-reveal="pending"` (hidden), then `"shown"` as they enter the viewport. `delay` staggers siblings. See 06.
 
+## `Nav` / `MobileMenu` (`components/nav`)
+
+See 03 for behavior. The mobile menu is a full-screen overlay holding an ornate panel of `MenuButton`s. It traps focus, closes on Esc, and returns focus to the trigger.
+
+## Toast (`components/sections/CopyEmail.tsx`)
+
+Copying the email shows a small dark framed toast, bottom-center, reading "Email copied". It dismisses after 3s and is announced with `role="status"`.
+
+## `SampleBanner` (`components/nav`)
+
+A small red mono label in the bottom-left corner, "Sample content · edit /content", shown while `sampleContent` is `true` in `content/site.ts`.
