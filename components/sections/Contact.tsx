@@ -19,10 +19,10 @@ export function Contact() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ButtonLink href={`mailto:${site.email}`} size="lg">
-                <Mail size={16} aria-hidden /> Send an Envoy
+                <Mail size={16} aria-hidden /> Email Me
               </ButtonLink>
               <ButtonLink href="/resume" variant="secondary" size="lg">
-                <ScrollText size={16} aria-hidden /> The Scroll · Résumé
+                <ScrollText size={16} aria-hidden /> Résumé
               </ButtonLink>
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-gold-500/40 pt-6">

@@ -24,8 +24,8 @@ Wireframes are schematic. `[ ]` are buttons, `( )` are medallions and roundels, 
                        ║   BEGIN: THE AGES         ║   ← primary (experience)
                        ╠═══════════════════════════╣
                        ║   THE GREAT WORKS         ║
-                       ║   THE SCROLL (RESUME)     ║
-                       ║   SEND AN ENVOY           ║
+                       ║   RÉSUMÉ     ║
+                       ║   GET IN TOUCH           ║
                        ╚═══════════════════════════╝
 
                   (gh)  (in)  (✉)            ⌄ scroll
@@ -38,7 +38,7 @@ Wireframes are schematic. `[ ]` are buttons, `( )` are medallions and roundels, 
 - Social icons sit in small gold-bordered roundels.
 - **Mobile:** same stack. The portrait shrinks to 120px, and the menu becomes full-width buttons.
 
-## 0.5 About: "The Scroll"
+## 0.5 About
 
 A short bio on a **parchment** panel. This is the only place parchment appears.
 
@@ -131,13 +131,13 @@ THE GREAT WORKS
 ║  TS · REACT      ║ ║  PY · PYTORCH    ║ ║  GO · GRPC       ║
 ╚══════════════════╝ ╚══════════════════╝ ╚══════════════════╝
 
-                 [ EXPLORE THE FULL CODEX → ]
+                 [ SEE ALL PROJECTS → ]
 ```
 
 - Tiering: **Wonder** (1 flagship, with a Tyrian purple badge and laurel), then **Great Work** (featured), then **Work** (archive only).
 - Every card shows: title, one-line description, 2–3 bullet impacts (Wonder only), tech tags (mono), links (repo, live, write-up), and a status pill (`LIVE`, `SHIPPED`, `IN PROGRESS`, `ARCHIVED`) in the appropriate accent.
 
-### `/projects`: "The Codex"
+### `/projects`: "The Archive"
 
 - A filter bar with gold-outline chips: **Type** (Web, Systems, ML, Research, Game, Tooling) and **Tech** (languages and frameworks).
 - A responsive grid of `ProjectCard`s, sortable by date or tier.
@@ -147,7 +147,7 @@ THE GREAT WORKS
 ```
 ┌── banner ─────────────────────────────────────────────┐
 │  ★ WONDER COMPLETED                                   │
-│  PROJECT NAME                         MMXXV · 2025    │
+│  PROJECT NAME                              APR 2025    │
 │  Tagline in italic                                    │
 └───────────────────────────────────────────────────────┘
 [ hero screenshot in gold frame ]
@@ -198,13 +198,13 @@ THE TECH TREE
 
 ---
 
-## IV. Hobbies: "The Forum" (Beyond the Code)
+## IV. Hobbies: "Off the Clock" (Beyond the Code)
 
 Small and warm. It lets the visitor see a person, not a résumé.
 
 ```
 IV  ·  BEYOND THE CODE
-THE FORUM
+OFF THE CLOCK
 ─── meander ───
 
  ╔═══════════╗  ╔═══════════╗  ╔═══════════╗  ╔═══════════╗
@@ -222,32 +222,31 @@ THE FORUM
 
 ---
 
-## V. Contact: "Send an Envoy"
+## V. Contact: "Get in Touch"
 
 ```
 V  ·  CONTACT
-SEND AN ENVOY
+GET IN TOUCH
 ─── meander ───
 
  ╔══════════════════════════════════════════════════════╗
  ║   Open to [internships / full-time roles / collabs]. ║
  ║   The fastest route is email.                        ║
  ║                                                      ║
- ║   [ ✉  SEND AN ENVOY ]   ← mailto, primary           ║
- ║   [ ⬇  DOWNLOAD THE SCROLL (RESUME PDF) ]            ║
+ ║   [ ✉  GET IN TOUCH ]   ← mailto, primary           ║
+ ║   [ ⬇  DOWNLOAD RÉSUMÉ (PDF) ]            ║
  ║                                                      ║
  ║   (gh) GitHub   (in) LinkedIn   (✉) email@...        ║
  ╚══════════════════════════════════════════════════════╝
 ```
 
-- Use a mailto plus a copy-email button (it shows a "Copied, the envoy departs" toast). **No contact form in v1**, which means no backend, no spam, and nothing to maintain.
+- Use a mailto plus a copy-email button (it shows an "Email copied" toast). **No contact form in v1**, which means no backend, no spam, and nothing to maintain.
 
 ## Footer
 
 ```
 ═══════════ meander band ═══════════
         (RT)
-  RAYMOND TSAI · MMXXVI · © 2026
+  RAYMOND TSAI · © 2026
   Built with Next.js · Set in Cinzel & EB Garamond
-  "Carthago delenda est" ← rotating Latin quote (with hover translation)
 ```

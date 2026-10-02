@@ -22,13 +22,6 @@ export const site = {
     { label: "GitHub", href: "https://github.com/RayTsai13" }, // TODO(raymond): confirm
     { label: "LinkedIn", href: "https://www.linkedin.com/" }, // TODO(raymond)
   ],
-  quotes: [
-    { latin: "Festina lente.", english: "Make haste slowly.", source: "Augustus" },
-    { latin: "Per aspera ad astra.", english: "Through hardships to the stars." },
-    { latin: "Faber est suae quisque fortunae.", english: "Every man is the maker of his own fortune.", source: "Appius Claudius Caecus" },
-    { latin: "Non scholae sed vitae discimus.", english: "We learn not for school, but for life.", source: "after Seneca" },
-    { latin: "Historia magistra vitae.", english: "History is the teacher of life.", source: "Cicero" },
-  ],
 } as const;
 
 /** Home page sections, in order. Drives nav, scroll-spy and the Next Turn button. */
@@ -36,8 +29,8 @@ export const sections = [
   { id: "experience", numeral: "I", label: "Experience", title: "The Ages" },
   { id: "projects", numeral: "II", label: "Projects", title: "The Great Works" },
   { id: "skills", numeral: "III", label: "Skills", title: "The Tech Tree" },
-  { id: "hobbies", numeral: "IV", label: "Beyond the Code", title: "The Forum" },
-  { id: "contact", numeral: "V", label: "Contact", title: "Send an Envoy" },
+  { id: "hobbies", numeral: "IV", label: "Beyond the Code", title: "Off the Clock" },
+  { id: "contact", numeral: "V", label: "Contact", title: "Get in Touch" },
 ] as const;
 
 export type SectionId = (typeof sections)[number]["id"];

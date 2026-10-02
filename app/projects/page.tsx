@@ -14,7 +14,7 @@ export default function ProjectsPage() {
   return (
     <div className="px-4 pb-24 pt-32 md:pt-40">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading id="codex-title" label="All Projects" title="The Codex" intro="Every work, great and small. Filter by type or technology." />
+        <SectionHeading id="codex-title" label="All Projects" title="The Archive" intro="Every project, big and small. Filter by type or technology." />
         <Suspense>
           <Codex projects={projects} />
         </Suspense>

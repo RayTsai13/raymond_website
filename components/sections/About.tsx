@@ -2,7 +2,7 @@ import { FramedPanel } from "@/components/frame";
 import { Reveal } from "@/components/ui";
 import { site } from "@/content/site";
 
-/** "The Scroll": the one parchment surface on the site. */
+/** About: the one parchment surface on the site. */
 export function About() {
   const [first, ...rest] = site.about;
   return (
@@ -10,7 +10,7 @@ export function About() {
       <Reveal className="mx-auto max-w-3xl">
         <FramedPanel variant="parchment" className="px-6 py-10 md:px-14 md:py-14">
           <h2 id="about-title" className="label mb-6 text-center text-bronze-700">
-            About · The Scroll
+            About
           </h2>
           <p className="text-lg leading-relaxed text-ink-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[3.6rem] first-letter:font-semibold first-letter:leading-[0.8] first-letter:text-gold-800 md:text-xl">
             {first}

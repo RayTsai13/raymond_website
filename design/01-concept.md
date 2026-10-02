@@ -44,7 +44,8 @@ Civilization VII is the right reference because it already solved the hard probl
 
 - **Headings:** classical and a little grand. "The Great Works". "Ages of Service".
 - **Body copy:** plain, confident, specific. "Built a real-time ingestion pipeline handling 2M events/day in Go."
-- **Microcopy:** a light wink. The "Next Turn" button. The "Send an Envoy" contact button. A 404 page that reads "These lands are uncharted."
+- **Microcopy:** a light wink from strategy games, never Roman roleplay. The "Next Turn" button. A 404 page that reads "These lands are uncharted."
+- **No Latin and no Roman roleplay in the text.** That means no "Salve", no Latin quotes, no Roman-numeral dates, and no "envoy/scroll/forum/codex/capital" wording. The visuals carry the theme, and the words stay plain. Strategy-game terms (Ages, Great Works, Wonder, Tech Tree, Next Turn) are fine.
 
 ## Mood keywords
 

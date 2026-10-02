@@ -9,7 +9,7 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 - [ ] One-line role: e.g. "Software Engineer · CS Student at ___"
 - [ ] Hero tagline (draft: *"Building systems that last, and studying why the old ones fell."*)
 - [ ] Portrait photo (square, well-lit, ≥ 800px)
-- [ ] 3–4 sentence bio for "The Scroll"
+- [ ] 3–4 sentence bio for the About section
 - [ ] "NOW" line: current status or what he's seeking, with timeframe
 - [ ] Links: GitHub, LinkedIn, email, and any others
 - [ ] Resume PDF
@@ -46,7 +46,6 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 
 ### Extras
 - [ ] Awards, hackathons, scholarships, publications
-- [ ] 5–10 favorite Latin quotes for the footer (or use a curated default list)
 
 ---
 

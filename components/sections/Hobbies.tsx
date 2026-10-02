@@ -4,7 +4,7 @@ import { Reveal, SectionHeading } from "@/components/ui";
 import { sections } from "@/content/site";
 import { getHobbies } from "@/lib/content";
 
-/** "The Forum": small cards with an emblem, a one-liner, and a detail line. */
+/** "Off the Clock": small cards with an emblem, a one-liner, and a detail line. */
 export function Hobbies() {
   const meta = sections[3];
   const hobbies = getHobbies();

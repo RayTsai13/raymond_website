@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { FramedPanel } from "@/components/frame";
 import { WonderReveal } from "@/components/projects/WonderReveal";
 import { StatusPill, TechTags } from "@/components/ui";
-import { formatMonth, getProject, getProjects, toRoman } from "@/lib/content";
+import { formatMonth, getProject, getProjects } from "@/lib/content";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -34,19 +34,17 @@ export default async function ProjectPage({ params }: Params) {
   const i = all.findIndex((p) => p.slug === slug);
   const prev = all[i - 1];
   const next = all[i + 1];
-  const year = Number(project.date.slice(0, 4));
 
   return (
     <article className="px-4 pb-24 pt-28 md:pt-36">
       <div className="mx-auto max-w-5xl">
         <Link href="/projects" className="prose-link label inline-flex items-center gap-2 no-underline">
-          <ArrowLeft size={14} aria-hidden /> The Codex
+          <ArrowLeft size={14} aria-hidden /> All projects
         </Link>
 
         <WonderReveal slug={slug} banner={TIER_BANNER[project.tier]}>
           <h1 className="inscription gold-gradient-text mt-4 text-4xl font-semibold leading-tight md:text-6xl">{project.title}</h1>
           <p className="mt-3 font-mono text-sm uppercase tracking-wide text-ink-500">
-            <span aria-hidden>{toRoman(year)} · </span>
             {formatMonth(project.date)}
           </p>
           {project.tagline && <p className="mt-4 font-italic text-2xl italic text-ink-700">{project.tagline}</p>}

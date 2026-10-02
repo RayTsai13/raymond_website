@@ -7,12 +7,12 @@
 ├── #experience         I.   Experience      — "The Ages"
 ├── #projects           II.  Projects        — "The Great Works"
 ├── #skills             III. Skills          — "The Tech Tree"
-├── #hobbies            IV.  Beyond the Code — "The Forum"
-└── #contact            V.   Contact         — "Send an Envoy"
+├── #hobbies            IV.  Beyond the Code — "Off the Clock"
+└── #contact            V.   Contact         — "Get in Touch"
 
-/projects               All projects (filterable), "The Codex"
+/projects               All projects (filterable), "The Archive"
 /projects/[slug]        Project detail, "Wonder" page
-/resume                 Placeholder, "The Scroll is being inscribed"
+/resume                 Placeholder, "My résumé is on its way"
 /404                    "These lands are uncharted."
 ```
 
@@ -23,13 +23,13 @@ Out of scope for v1: blog, dark theme, easter eggs.
 | Order | Section | Purpose |
 |---|---|---|
 | 0 | **Hero / Main Menu** | Who, what, where next (Antikythera hero) |
-| 0.5 | **About ("The Scroll")** | Short bio: engineer + historian |
+| 0.5 | **About** | Short bio: engineer + historian |
 | I | **Experience** | Timeline grouped into Ages |
-| II | **Projects** | 1 Wonder + 2–3 Great Works, then a link to the Codex |
+| II | **Projects** | 1 Wonder + 2–3 Great Works, then a link to all projects |
 | III | **Skills** | Tech tree |
-| IV | **Hobbies** | 3–6 Forum cards |
+| IV | **Hobbies** | 3–6 hobby cards |
 | V | **Contact** | Email, links, resume |
-| — | **Footer** | Meander band, monogram, Latin quote |
+| — | **Footer** | Meander band, monogram, name and year |
 
 ## Navigation
 

@@ -86,7 +86,7 @@ On mobile, display sizes shrink by about 35%. Body text stays at 17–18px.
 
 ### Details
 - Sections are numbered with **Roman numerals**: I Experience, II Projects, III Skills, IV Hobbies, V Contact.
-- Roman-numeral dates are ornament only. The real date always appears alongside in mono.
+- Dates are plain (`APR 2026`). No Roman-numeral dates, which read as costume.
 - Separate lists with **interpuncts** (`·`).
 - Use a gold **drop cap** in the About section and on project pages only.
 

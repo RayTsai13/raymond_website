@@ -1,4 +1,4 @@
-/** Themed line-art emblems for the Forum (hobby) cards. Original, decorative. */
+/** Themed line-art emblems for the hobby cards. Original, decorative. */
 import type { Hobby } from "@/lib/content";
 
 const paths: Record<Hobby["icon"], React.ReactNode> = {

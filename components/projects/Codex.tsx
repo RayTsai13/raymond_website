@@ -48,7 +48,7 @@ export function Codex({ projects }: { projects: ProjectMeta[] }) {
       </p>
 
       {filtered.length === 0 ? (
-        <p className="py-16 text-center font-italic text-xl italic text-ink-500">No works match. These lands are uncharted.</p>
+        <p className="py-16 text-center font-italic text-xl italic text-ink-500">No projects match those filters.</p>
       ) : (
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) =>

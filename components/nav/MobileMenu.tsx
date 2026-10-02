@@ -90,7 +90,7 @@ export function MobileMenu({ onHome }: { onHome: boolean }) {
                 ))}
                 <li>
                   <MenuButton href="/resume" onClick={close}>
-                    The Scroll · Résumé
+                    Résumé
                   </MenuButton>
                 </li>
               </ul>

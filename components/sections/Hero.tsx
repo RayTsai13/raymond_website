@@ -20,7 +20,7 @@ export function Hero() {
 
       <div className="flex w-full max-w-xl flex-col items-center text-center">
         <p className="label hero-enter mb-5 text-gold-800" style={d(300)}>
-          Salve · Welcome
+          Welcome
         </p>
 
         <div className="hero-enter" style={d(450)}>
@@ -51,10 +51,10 @@ export function Hero() {
               <MenuButton href="#projects">The Great Works</MenuButton>
             </li>
             <li>
-              <MenuButton href="/resume">The Scroll · Résumé</MenuButton>
+              <MenuButton href="/resume">Résumé</MenuButton>
             </li>
             <li>
-              <MenuButton href="#contact">Send an Envoy</MenuButton>
+              <MenuButton href="#contact">Get in Touch</MenuButton>
             </li>
           </ul>
         </FramedPanel>

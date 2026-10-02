@@ -33,7 +33,7 @@ export function Projects() {
         </ul>
         <div className="mt-12 text-center">
           <ButtonLink href="/projects" variant="secondary">
-            Explore the full Codex →
+            See all projects →
           </ButtonLink>
         </div>
       </div>

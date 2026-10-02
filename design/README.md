@@ -18,7 +18,7 @@ A portfolio for a software engineer and computer science student who also studie
 
 ## One-paragraph pitch
 
-The visitor lands on something that feels like the main menu of a grand strategy game: sunlit marble with a huge gold Antikythera-mechanism orrery slowly turning behind a gold-framed medallion portrait, the name set in Roman inscription capitals, and a short menu of choices. Scrolling moves the visitor through the **Ages** of Raymond's career (experience, first), the **Great Works** he has built (projects), a **Tech Tree** of his skills, and a small **Forum** of hobbies. Each section has a plain-English label, so a recruiter skimming for 30 seconds never has to decode the theme.
+The visitor lands on something that feels like the main menu of a grand strategy game: sunlit marble with a huge gold Antikythera-mechanism orrery slowly turning behind a gold-framed medallion portrait, the name set in Roman inscription capitals, and a short menu of choices. Scrolling moves the visitor through the **Ages** of Raymond's career (experience, first), the **Great Works** he has built (projects), a **Tech Tree** of his skills, and a small section of hobbies. Each section has a plain-English label, so a recruiter skimming for 30 seconds never has to decode the theme.
 
 ## Status
 

@@ -20,7 +20,7 @@ app/
   layout.tsx              fonts, <Nav/>, <Footer/>, <NextTurnButton/>
   page.tsx                home: Hero, About, Projects, Experience, Skills, Hobbies, Contact
   projects/
-    page.tsx              the Codex (filterable)
+    page.tsx              the Archive (filterable)
     [slug]/page.tsx       Wonder page (MDX)
   resume/page.tsx
   not-found.tsx           "These lands are uncharted"
@@ -38,7 +38,7 @@ content/
   experience.ts           typed entries with `age: 'antiquity' | 'exploration' | 'modern'`
   skills.ts               nodes + edges + state
   hobbies.ts
-  site.ts                 name, tagline, socials, "now" line, Latin quotes
+  site.ts                 name, tagline, socials, "now" line
 lib/
   content.ts              loaders + zod schemas for validation at build time
 public/

@@ -17,7 +17,7 @@ A themed site is only impressive if it's also fast and usable. Recruiters and en
 - Themed titles are always paired with plain labels inside the same heading (see `SectionHeading` in 05).
 - Landmarks: `header`, `nav`, `main`, `footer`, and `section` with `aria-labelledby`.
 - Decorative SVG ornaments get `aria-hidden="true"` and `focusable="false"`.
-- Roman numerals are decorative. The real value is always present in text, and ornamental numerals are `aria-hidden`.
+- Section numerals (I–V) are decorative chapter marks. The plain section name is always present in the heading.
 - A skip link ("Skip to content") is styled as a small gold banner on focus.
 
 ### Keyboard
