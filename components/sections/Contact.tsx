@@ -2,11 +2,11 @@ import { Mail, ScrollText } from "lucide-react";
 import { FramedPanel } from "@/components/frame";
 import { ButtonLink, Reveal, SectionHeading } from "@/components/ui";
 import { socialIcon } from "@/components/ui/icons";
-import { sections, site } from "@/content/site";
+import { getSection, site } from "@/content/site";
 import { CopyEmail } from "./CopyEmail";
 
 export function Contact() {
-  const meta = sections[4];
+  const meta = getSection("contact")!;
   return (
     <section id={meta.id} aria-labelledby={`${meta.id}-title`} className="bg-marble-100/60 px-4 py-24 md:py-32">
       <div className="mx-auto max-w-3xl">

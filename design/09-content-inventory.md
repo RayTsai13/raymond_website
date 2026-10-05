@@ -2,7 +2,7 @@
 
 The design is only as good as what goes in it. Here's what Raymond needs to gather.
 
-**Current state:** every section is filled with fictional **sample content** so the layout can be judged. It's marked `SAMPLE CONTENT` / `TODO(raymond)` in the source, and a "Sample content" label shows while `sampleContent: true` in `content/site.ts`. Each item below says which file it goes in. The root `README.md` covers the project front matter format.
+**Current state:** real content from Raymond's personal notes has replaced the sample content. Remaining gaps are marked `TODO(raymond)` in the source and listed in the root `README.md`. Each item below says which file it goes in. The root `README.md` covers the project front matter format.
 
 ## Content checklist
 

@@ -42,7 +42,6 @@ lib/
   content.ts              zod schemas, loaders, date formatting
   og.tsx                  shared OG image renderer
   cn.ts                   class-name join helper
-public/samples/           mock screenshots for sample projects
 ```
 
 ## Design tokens in code

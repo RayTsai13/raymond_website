@@ -25,7 +25,7 @@ The visitor lands on something that feels like the main menu of a grand strategy
 - [x] Design direction and specs (this folder)
 - [x] Decisions: Day theme only, experience first, abstract hero, no blog, no easter eggs, résumé placeholder (see 09)
 - [x] Build: tokens, components, every section and page (see 08)
-- [x] Sample content seeded: fictional, marked `SAMPLE CONTENT`. The label toggles via `sampleContent` in `content/site.ts`.
+- [x] Real content filled in from Raymond's notes. Gaps are marked `TODO(raymond)`.
 - [x] Copy toned down: themed visuals, plain text (see 01, "Tone of voice")
 - [x] Polish: motion, reduced motion, accessibility pass, Lighthouse (Accessibility/Best Practices/SEO 100, Performance 91–92; see 07)
 - [ ] Real content (checklist in 09)

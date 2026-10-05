@@ -1,10 +1,10 @@
 import { ProjectCard, WonderCard } from "@/components/projects/ProjectCard";
 import { ButtonLink, Reveal, SectionHeading } from "@/components/ui";
-import { sections } from "@/content/site";
+import { getSection } from "@/content/site";
 import { getProjects, toMeta } from "@/lib/content";
 
 export function Projects() {
-  const meta = sections[1];
+  const meta = getSection("projects")!;
   const projects = getProjects().map(toMeta);
   const wonder = projects.find((p) => p.tier === "wonder");
   const greatWorks = projects.filter((p) => p.tier === "great-work").slice(0, 3);

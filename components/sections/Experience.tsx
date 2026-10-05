@@ -1,7 +1,7 @@
 import { BannerHeader, FramedPanel } from "@/components/frame";
 import { Laurel, Rosette } from "@/components/ornaments";
 import { Reveal, SectionHeading, TechTags } from "@/components/ui";
-import { sections } from "@/content/site";
+import { getSection } from "@/content/site";
 import { formatRange, getExperience, getHonors, type Age, type Experience as Entry } from "@/lib/content";
 import { cn } from "@/lib/cn";
 import { TimelineRail } from "./TimelineRail";
@@ -27,7 +27,7 @@ const AGES: Record<Age, { name: string; blurb: string; text: string }> = {
 const ORDER: Age[] = ["antiquity", "exploration", "modern"];
 
 export function Experience() {
-  const meta = sections[0];
+  const meta = getSection("experience")!;
   const entries = getExperience();
   let index = 0; // global index for left/right alternation
 

@@ -1,8 +1,8 @@
 # Raymond Tsai: Portfolio
 
-Personal portfolio for a software engineer and computer science student who also studies history. The visual style is a light, "rich minimalist" take on strategy-game UI (mainly Civilization VII, with touches of Imperator: Rome): ivory and marble surfaces, gold frames, inscription capitals, and an animated gold "Antikythera mechanism" in the hero. The **text** stays plain English. The theme lives in the visuals.
+Personal portfolio for a software engineer and computer science student. The visual style is a light, "rich minimalist" take on strategy-game UI (mainly Civilization VII, with touches of Imperator: Rome): ivory and marble surfaces, gold frames, inscription capitals, and an animated gold "Antikythera mechanism" in the hero. The **text** stays plain English. The theme lives in the visuals.
 
-> **Status:** the site is fully built but still shows **sample content** (fictional organizations and projects). A red "Sample content" label appears on every page until `sampleContent` is set to `false` in `content/site.ts`. See [Replacing the sample content](#replacing-the-sample-content).
+> **Status:** the content is real, drawn from Raymond's personal notes. A few gaps remain, marked `TODO(raymond)` in the source. See [Remaining content](#remaining-content).
 
 ## Quick start
 
@@ -59,7 +59,6 @@ content/                 ← all site content lives here (see below)
 lib/
   content.ts             Content schemas (zod), loaders, date formatting
   og.tsx                 Shared Open Graph image renderer
-public/samples/          Mock project screenshots used by the sample content
 design/                  Design specs: concept, visual language, components, motion, a11y
 ```
 
@@ -104,16 +103,18 @@ Markdown/MDX body: Problem → Approach → Challenges → Results → What I'd 
 
 The home page shows the one `wonder` plus up to three `great-work` projects. Every project appears on `/projects`.
 
-### Replacing the sample content
+### Remaining content
 
-All sample entries are fictional and marked `SAMPLE CONTENT` or `TODO(raymond)` in the source:
+Gaps are marked `TODO(raymond)` in the source:
 
-1. Replace the entries in each `content/` file and the `.mdx` projects (delete the sample `.mdx` files you don't need).
-2. Put your own screenshots in `public/` and point each project's `cover:` at them. You can then delete `public/samples/`.
-3. Set `email`, `url` (your domain), and the LinkedIn link in `content/site.ts`, and confirm the GitHub link.
-4. Portrait: the hero shows an "RT" monogram until you add a photo. See the `TODO(raymond)` in `components/sections/Hero.tsx`.
-5. Résumé: add `public/resume.pdf`, then enable the download button in `app/resume/page.tsx`.
-6. Set `sampleContent: false` in `content/site.ts` to remove the "Sample content" label.
+1. Hobbies: `content/hobbies.ts` is empty, so the "Beyond the Code" section is hidden. It appears (and the sections renumber) once you add entries.
+2. Screenshots: put them in `public/` and point each project's `cover:` at them. Add repo links too.
+3. Skills: every skill is set to "proficient" with no years. Adjust them in `content/skills.ts`.
+4. Set `url` (your domain) and the tagline in `content/site.ts`.
+5. Portrait: the hero shows an "RT" monogram until you add a photo. See the `TODO(raymond)` in `components/sections/Hero.tsx`.
+6. Résumé: add `public/resume.pdf`, then enable the download button in `app/resume/page.tsx`.
+
+The `sampleContent` flag in `content/site.ts` shows a "Sample content" label when set to `true`.
 
 The full checklist is in [`design/09-content-inventory.md`](design/09-content-inventory.md).
 

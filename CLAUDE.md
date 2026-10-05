@@ -11,7 +11,8 @@ Personal portfolio (Next.js 16 App Router, React 19, Tailwind v4). See `README.m
 
 ## Content
 - All site content lives in `content/` and is validated by zod schemas in `lib/content.ts`. Change content there, not in components.
-- The current content is fictional sample content (`SAMPLE CONTENT` / `TODO(raymond)` markers; `sampleContent` flag in `content/site.ts`).
+- Content is real, sourced from Raymond's notes. Don't invent details; leave gaps as `TODO(raymond)`. Remaining gaps are listed in `README.md` → Remaining content.
+- An empty `content/hobbies.ts` hides that section; sections are looked up by id via `getSection()`, not by index.
 
 ## Copy rule
 - The Greco-Roman / Civ VII theme is **visual only**. Site text is plain English: no Latin, no Roman-numeral dates, no roleplay words (envoy, scroll, forum, codex, capital). Strategy-game terms are allowed: Ages, Great Works, Wonder, Tech Tree, Next Turn.

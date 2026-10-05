@@ -1,10 +1,10 @@
 import { TechTree } from "@/components/skills/TechTree";
 import { Reveal, SectionHeading } from "@/components/ui";
-import { sections } from "@/content/site";
+import { getSection } from "@/content/site";
 import { getSkills } from "@/lib/content";
 
 export function Skills() {
-  const meta = sections[2];
+  const meta = getSection("skills")!;
   return (
     <section id={meta.id} aria-labelledby={`${meta.id}-title`} className="bg-marble-100/60 px-4 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">

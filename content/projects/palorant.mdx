@@ -1,0 +1,29 @@
+---
+title: "Palorant"
+tier: great-work
+status: shipped
+date: "2025-12"
+summary: "A 3D multiplayer first-person shooter engine built from scratch in C++ with Raylib, for a class project."
+stack: ["C++", "C", "Raylib", "POSIX sockets"]
+types: ["game", "systems"]
+role: "Networking: client-server multiplayer"
+team: "3"
+# TODO(raymond): add a repo link and a cover screenshot.
+---
+
+## What I built
+
+I owned the networking:
+
+- A hybrid UDP/TCP architecture on custom POSIX sockets. UDP carries high-frequency player state, and TCP carries reliable chat messages.
+- A server that handles lobby creation, hitscan validation, and game state replication for multiple clients.
+
+Networking was the hardest part of the project for me, mostly because of race conditions and peer-to-peer architectures.
+
+## What the team built
+
+Custom physics, collision detection, and raycasting, all written from scratch.
+
+## Result
+
+Multiplayer gameplay ran smoothly.

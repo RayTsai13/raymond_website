@@ -1,26 +1,28 @@
-// TODO(raymond): adjust skills, states and prerequisites. `requires` draws the tree edges.
+// Only skills with evidence in the vault (Skills Inventory). `requires` draws the tree edges.
 // abbr: 1–3 letters shown in the node roundel.
 // state: mastered (solid gold) · proficient (bronze) · researching (dashed, learning now)
+// TODO(raymond): the vault doesn't rate proficiency, so every skill is "proficient" with no years. Adjust these.
+// Resume skills without vault evidence yet (Go, Rust, C#, Flutter, Next.js, Flask, GCP, Kubernetes, Supabase, Prisma) are left out.
 
 export const skills = [
   // Foundations
-  { id: "python", name: "Python", abbr: "Py", column: "foundations", state: "mastered", years: 4 },
-  { id: "java", name: "Java", abbr: "Jv", column: "foundations", state: "proficient", years: 3 },
-  { id: "c", name: "C / C++", abbr: "C", column: "foundations", state: "proficient", years: 2 },
-  { id: "js", name: "JavaScript", abbr: "JS", column: "foundations", state: "mastered", years: 4 },
-  { id: "sql", name: "SQL", abbr: "SQL", column: "foundations", state: "proficient", years: 2 },
+  { id: "python", name: "Python", abbr: "Py", column: "foundations", state: "proficient" },
+  { id: "java", name: "Java", abbr: "Jv", column: "foundations", state: "proficient" },
+  { id: "c", name: "C / C++", abbr: "C", column: "foundations", state: "proficient" },
+  { id: "ts", name: "TypeScript", abbr: "TS", column: "foundations", state: "proficient" },
+  { id: "sql", name: "SQL", abbr: "SQL", column: "foundations", state: "proficient" },
 
   // Systems & frameworks
-  { id: "ts", name: "TypeScript", abbr: "TS", column: "systems", state: "mastered", requires: ["js"], years: 3 },
-  { id: "react", name: "React / Next.js", abbr: "Re", column: "systems", state: "mastered", requires: ["ts"], years: 3 },
-  { id: "node", name: "Node.js", abbr: "Nd", column: "systems", state: "proficient", requires: ["js"], years: 2 },
-  { id: "os", name: "Operating Systems", abbr: "OS", column: "systems", state: "proficient", requires: ["c"] },
+  { id: "react", name: "React", abbr: "Re", column: "systems", state: "proficient", requires: ["ts"] },
+  { id: "node", name: "Node.js / Express", abbr: "Nd", column: "systems", state: "proficient", requires: ["ts"] },
   { id: "postgres", name: "PostgreSQL", abbr: "PG", column: "systems", state: "proficient", requires: ["sql"] },
-  { id: "pytorch", name: "PyTorch", abbr: "PT", column: "systems", state: "proficient", requires: ["python"] },
+  { id: "docker", name: "Docker", abbr: "Dk", column: "systems", state: "proficient" },
+  { id: "sockets", name: "POSIX Sockets", abbr: "So", column: "systems", state: "proficient", requires: ["c"] },
 
   // Specialties
-  { id: "fullstack", name: "Full-Stack Web", abbr: "FS", column: "specialties", state: "mastered", requires: ["react", "node", "postgres"] },
-  { id: "distributed", name: "Distributed Systems", abbr: "DS", column: "specialties", state: "researching", requires: ["os", "java"], note: "Learning now" },
-  { id: "ml", name: "Machine Learning", abbr: "ML", column: "specialties", state: "proficient", requires: ["pytorch"] },
-  { id: "cloud", name: "Cloud & Docker", abbr: "CD", column: "specialties", state: "researching", requires: ["node", "os"], note: "Learning now" },
+  { id: "fullstack", name: "Full-Stack Web", abbr: "FS", column: "specialties", state: "proficient", requires: ["react", "node", "postgres"] },
+  { id: "etl", name: "Data Pipelines", abbr: "ETL", column: "specialties", state: "proficient" },
+  { id: "cloud", name: "Cloud (Azure, AWS)", abbr: "Cl", column: "specialties", state: "proficient", requires: ["docker"] },
+  { id: "iac", name: "Terraform & CI/CD", abbr: "TF", column: "specialties", state: "proficient", requires: ["docker"] },
+  { id: "networking", name: "Networking (UDP/TCP)", abbr: "Net", column: "specialties", state: "proficient", requires: ["sockets"] },
 ];

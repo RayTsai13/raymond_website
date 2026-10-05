@@ -1,13 +1,14 @@
 import { FramedPanel } from "@/components/frame";
 import { Emblem } from "@/components/ornaments/Emblems";
 import { Reveal, SectionHeading } from "@/components/ui";
-import { sections } from "@/content/site";
+import { getSection } from "@/content/site";
 import { getHobbies } from "@/lib/content";
 
 /** "Off the Clock": small cards with an emblem, a one-liner, and a detail line. */
 export function Hobbies() {
-  const meta = sections[3];
+  const meta = getSection("hobbies");
   const hobbies = getHobbies();
+  if (!meta || !hobbies.length) return null;
   return (
     <section id={meta.id} aria-labelledby={`${meta.id}-title`} className="px-4 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">

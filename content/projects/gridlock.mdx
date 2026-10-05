@@ -1,0 +1,33 @@
+---
+title: "GridLock"
+tier: great-work
+status: live
+date: "2026-04"
+summary: "A transit demand simulation for Seattle, shown on an interactive 3D map. Finalist at UWBHacks '26."
+impact:
+  - "Won a Finalist prize at UWBHacks '26"
+  - "Judges especially liked how applicable it was, and the demo"
+stack: ["React", "MapLibre", "FastAPI", "Docker", "GitHub Actions"]
+types: ["web", "ml"]
+role: "Frontend engineer: built the entire React frontend"
+team: "4"
+links:
+  live: "http://178.128.71.114"
+# TODO(raymond): add a repo link and a cover screenshot.
+---
+
+## What I built
+
+I built the whole React frontend: an interactive 3D map of Seattle, made with MapLibre, that renders 3D buildings, transit routes, and a demand heatmap.
+
+The main challenge was the map data. I pulled building footprints and building sizes from multiple sources and combined them into a map that stayed fast and still looked good.
+
+## What the team built
+
+- **Backend:** a FastAPI service that streams live heatmap data over Server-Sent Events and switches between simulation states.
+- **ML:** geospatial joins, distance-based weighting, GTFS parsing, time-binned features, and gradient-boosted regression, combined into a transit demand model that works for any city.
+- **Infrastructure:** Docker Compose with separate frontend and backend images, GitHub Actions CI/CD with automated tests, and Caddy and Nginx reverse proxies.
+
+## Result
+
+GridLock won a Finalist prize at UWBHacks '26, and it's still hosted.
