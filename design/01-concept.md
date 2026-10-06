@@ -27,7 +27,7 @@ Civilization VII is the right reference because it already solved the hard probl
 | Ornamental corner pieces and filigree frame edges | `FramedPanel` corners (SVG), used on key panels only |
 | Leader portrait in a circular medallion | Hero portrait of Raymond, and small avatars |
 | Banner / ribbon headers | Section titles and card headers |
-| The three **Ages** (Antiquity, Exploration, Modern) | The structure of the Experience timeline |
+| Era bands on a timeline | The Experience timeline, as three plain-named stages |
 | **Tech tree** with connected nodes | Skills visualization |
 | **Wonders** and their completion splash | Featured projects and the project detail "reveal" |
 | The **Next Turn** button in the corner | Floating "next section" button |
@@ -43,7 +43,7 @@ Civilization VII is the right reference because it already solved the hard probl
 
 ## Tone of voice
 
-- **Headings:** classical and a little grand. "The Great Works". "Ages of Service".
+- **Headings:** classical and a little grand. "The Great Works".
 - **Body copy:** plain, confident, specific. "Built a real-time ingestion pipeline handling 2M events/day in Go."
 - **Microcopy:** a light wink from strategy games, never Roman roleplay. The "Next Turn" button. A 404 page that reads "These lands are uncharted."
 - **No Latin and no Roman roleplay in the text.** That means no "Salve", no Latin quotes, no Roman-numeral dates, and no "envoy/scroll/forum/codex/capital" wording. The visuals carry the theme, and the words stay plain. Strategy-game terms (Ages, Great Works, Wonder, Tech Tree, Next Turn) are fine.

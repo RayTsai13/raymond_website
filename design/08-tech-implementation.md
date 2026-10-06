@@ -56,7 +56,7 @@ All tokens live in the `@theme` block of `app/globals.css`, and the values match
   --color-gold-500: #c9a45c;    /* ornaments only */
   --color-gold-800: #7a5c24;    /* gold text */
   --color-lapis-800: #1c2a40;   /* dark accent */
-  --color-terracotta-600: #8f5024; /* Antiquity age */
+  --color-terracotta-600: #8f5024; /* Foundations stage */
   --font-display: var(--font-cinzel), "Trajan Pro", Georgia, serif;
   --radius-stone: 2px;
   --ease-ceremonial: cubic-bezier(0.16, 1, 0.3, 1);
@@ -90,7 +90,7 @@ type Project = {
 
 type Experience = {
   org: string; role: string;
-  age: "antiquity" | "exploration" | "modern";
+  stage: "foundations" | "first-roles" | "industry";
   start: string; end?: string;  // no end = present
   location?: string;
   bullets: string[];

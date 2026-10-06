@@ -35,11 +35,11 @@ The site is **sunlit marble with gold trim**. Surfaces are warm whites and ivori
 | `verdigris-600` | `#3F7568` | Live / success |
 | `lapis-600` | `#2A4F8F` | In progress / info |
 
-### Age tints (Experience timeline)
-Each Age band gets a faint wash (≈6%) over marble plus a colored Age label:
-- **Antiquity:** terracotta `#8F5024`
-- **Exploration:** lapis `#2A4F8F`
-- **Modern:** verdigris `#3F7568`
+### Stage tints (Experience timeline)
+Each stage band gets a faint wash (≈6%) over marble plus a colored stage label:
+- **Foundations:** terracotta `#8F5024`
+- **First Roles:** lapis `#2A4F8F`
+- **Industry:** verdigris `#3F7568`
 
 ### Rules
 1. **Gold as text must be `gold-800`.** `gold-500` is too light to read on white, so use it only for ornaments, frames, and rules.
@@ -74,7 +74,7 @@ Each Age band gets a faint wash (≈6%) over marble plus a colored Age label:
 |---|---|---|---|
 | `display-xl` | 72/1.0, +0.08em | Cinzel 600 | Hero name |
 | `display-lg` | 44/1.1, +0.06em | Cinzel 600 | Section titles |
-| `display-md` | 28/1.2, +0.05em | Cinzel 500 | Card titles, Age names |
+| `display-md` | 28/1.2, +0.05em | Cinzel 500 | Card titles, stage names |
 | `subtitle` | 22/1.3 | Cormorant italic | Themed subtitles |
 | `body-lg` | 20/1.6 | EB Garamond | Lede |
 | `body` | 18/1.65 | EB Garamond | Default |

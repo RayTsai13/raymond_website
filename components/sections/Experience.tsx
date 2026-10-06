@@ -2,29 +2,29 @@ import { BannerHeader, FramedPanel } from "@/components/frame";
 import { Laurel, Rosette } from "@/components/ornaments";
 import { Reveal, SectionHeading, TechTags } from "@/components/ui";
 import { getSection } from "@/content/site";
-import { formatRange, getExperience, getHonors, type Age, type Experience as Entry } from "@/lib/content";
+import { formatRange, getExperience, getHonors, type Experience as Entry, type Stage } from "@/lib/content";
 import { cn } from "@/lib/cn";
 import { TimelineRail } from "./TimelineRail";
 
-const AGES: Record<Age, { name: string; blurb: string; text: string }> = {
-  antiquity: {
-    name: "Age of Antiquity",
-    blurb: "Foundations: education and first works",
+const STAGES: Record<Stage, { name: string; blurb: string; text: string }> = {
+  foundations: {
+    name: "Foundations",
+    blurb: "Education and coursework",
     text: "text-terracotta-600",
   },
-  exploration: {
-    name: "Age of Exploration",
+  "first-roles": {
+    name: "First Roles",
     blurb: "Internships, research, and teaching",
     text: "text-lapis-600",
   },
-  modern: {
-    name: "The Modern Age",
-    blurb: "Where the chronicle stands today",
+  industry: {
+    name: "Industry",
+    blurb: "Professional engineering work",
     text: "text-verdigris-600",
   },
 };
 
-const ORDER: Age[] = ["antiquity", "exploration", "modern"];
+const ORDER: Stage[] = ["foundations", "first-roles", "industry"];
 
 export function Experience() {
   const meta = getSection("experience")!;
@@ -39,23 +39,23 @@ export function Experience() {
           numeral={meta.numeral}
           label={meta.label}
           title={meta.title}
-          intro="A career told in three ages, from first foundations to the present day."
+          intro="From the classroom to industry."
         />
 
         <TimelineRail>
-          {ORDER.map((age) => {
+          {ORDER.map((stage) => {
             const items = entries
-              .filter((e) => e.age === age)
-              .sort((a, b) => a.start.localeCompare(b.start)); // chronological, like the Ages
+              .filter((e) => e.stage === stage)
+              .sort((a, b) => a.start.localeCompare(b.start)); // chronological
             if (!items.length) return null;
-            const a = AGES[age];
+            const s = STAGES[stage];
             return (
-              <div key={age} className="relative py-8">
+              <div key={stage} className="relative py-8">
                 <Reveal className="relative z-10 mb-10 flex flex-col items-start pl-12 md:items-center md:pl-0">
                   <BannerHeader>
-                    <span className={a.text}>{a.name}</span>
+                    <span className={s.text}>{s.name}</span>
                   </BannerHeader>
-                  <p className="mt-2 font-italic text-lg italic text-ink-500">{a.blurb}</p>
+                  <p className="mt-2 font-italic text-lg italic text-ink-500">{s.blurb}</p>
                 </Reveal>
                 <ol className="space-y-10 md:space-y-14">
                   {items.map((e) => (

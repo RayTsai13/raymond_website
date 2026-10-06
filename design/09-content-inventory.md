@@ -29,7 +29,7 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 - [ ] Org, role, dates, location
 - [ ] 2–4 impact bullets
 - [ ] Stack
-- [ ] Which **Age** it belongs to (or accept the default split in 04)
+- [ ] Which **stage** it belongs to (or accept the default split in 04)
 
 ### Education
 - [ ] University, degree, minor (History?), expected graduation

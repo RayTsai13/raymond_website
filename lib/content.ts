@@ -34,7 +34,7 @@ export const projectSchema = z.object({
 export const experienceSchema = z.object({
   org: z.string(),
   role: z.string(),
-  age: z.enum(["antiquity", "exploration", "modern"]),
+  stage: z.enum(["foundations", "first-roles", "industry"]),
   start: isoDate,
   end: isoDate.optional(),
   location: z.string().optional(),
@@ -73,7 +73,7 @@ export type Project = ProjectMeta & { body: string };
 export type ProjectStatus = ProjectMeta["status"];
 export type ProjectType = (typeof projectTypes)[number];
 export type Experience = z.infer<typeof experienceSchema>;
-export type Age = Experience["age"];
+export type Stage = Experience["stage"];
 export type Skill = z.infer<typeof skillSchema>;
 export type Hobby = z.infer<typeof hobbySchema>;
 export type Honor = z.infer<typeof honorSchema>;

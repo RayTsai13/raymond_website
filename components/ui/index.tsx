@@ -148,7 +148,7 @@ export function StatusPill({ status }: { status: ProjectStatus }) {
 
 /**
  * Plain label (for skimmers & screen readers) + themed title, in one h2.
- * e.g. "I · Experience" / "The Ages".
+ * e.g. "I · Experience" / "Timeline".
  */
 export function SectionHeading({
   id,

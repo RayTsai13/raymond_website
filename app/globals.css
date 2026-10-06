@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Short viewports (wide laptops, landscape tablets): tighten the hero so it fits one screen. */
+@custom-variant short (@media (max-height: 68rem));
+@custom-variant tight (@media (max-height: 46rem));
+
 /* ── Design tokens (design/02-visual-language.md) ───────────────────────── */
 @theme {
   --color-marble-50: #fbf8f2;

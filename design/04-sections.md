@@ -22,7 +22,7 @@ Wireframes are schematic. `[ ]` are buttons, `( )` are medallions and roundels, 
                               the old ones fell."
 
                        ╔═══════════════════════════╗
-                       ║   BEGIN · THE AGES        ║   ← primary (experience)
+                       ║   BEGIN · TIMELINE        ║   ← primary (experience)
                        ╠═══════════════════════════╣
                        ║   THE GREAT WORKS         ║
                        ║   RÉSUMÉ                  ║
@@ -61,16 +61,16 @@ A short bio on a **parchment** panel. This is the only place parchment appears.
 
 ---
 
-## I. Experience: "The Ages"
+## I. Experience: "Timeline"
 
-The career timeline is grouped into three **Ages**, echoing Civ VII's Antiquity, Exploration, and Modern eras. Each Age is a band with its own subtle tint.
+The career timeline is grouped into three plain-English **stages**: Foundations, First Roles, and Industry. Each stage is a band with its own subtle tint. (These replaced the earlier Civ-style "Age of Antiquity / Exploration / Modern" names, which read as corny.)
 
 ```
 I  ·  EXPERIENCE
-THE AGES
+TIMELINE
 ─── meander ───
 
- ┃ ═══ AGE OF ANTIQUITY ═══  (foundations: education, first projects)
+ ┃ ═══ FOUNDATIONS ═══  (education and coursework)
  ┃
  ◉─── ╔════════════════════════════════════════╗
  ┃    ║ (logo) UNIVERSITY NAME                 ║
@@ -78,7 +78,7 @@ THE AGES
  ┃    ║ 2023 — 2027          ▸ coursework ...  ║
  ┃    ╚════════════════════════════════════════╝
  ┃
- ┃ ═══ AGE OF EXPLORATION ═══  (internships, research, TA)
+ ┃ ═══ FIRST ROLES ═══  (internships, research, and teaching)
  ┃
  ◉─── ╔════════════════════════════════════════╗
  ┃    ║ (logo) COMPANY · Software Eng. Intern  ║
@@ -88,7 +88,7 @@ THE AGES
  ┃    ║ GO · KAFKA · AWS                       ║
  ┃    ╚════════════════════════════════════════╝
  ┃
- ┃ ═══ MODERN AGE ═══  (current)
+ ┃ ═══ INDUSTRY ═══  (professional engineering work)
  ┃
  ◉ ◀ YOU ARE HERE (pulsing gold)
  ┃
@@ -99,7 +99,7 @@ THE AGES
 - Entries alternate left and right on desktop. On mobile they sit in a single column with the rail on the left.
 - The rail **draws itself** as you scroll (a gold line scaled by scroll progress). Each node turns gold as its entry appears.
 - Each entry is a framed card: org, title, dates (mono), location, 2–4 impact bullets, and tech tags. Org logos were planned but aren't implemented.
-- **Assigning Ages** is a creative choice. Suggested split: *Antiquity* = education, clubs, and first projects. *Exploration* = internships, research, TA work, and hackathons. *Modern* = the current or most recent role, plus what's next.
+- **Assigning stages:** *Foundations* = education. *First Roles* = internships, research, RA/TA work, and hackathons. *Industry* = professional engineering roles.
 - An **"Honors & Achievements"** strip sits beneath (awards, hackathon wins, scholarships, papers) as small laurel badges, four across. Content is in `content/honors.ts`.
 
 ---

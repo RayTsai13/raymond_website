@@ -4,7 +4,7 @@
 
 ```
 /                       Home: single long-scroll "chronicle"
-├── #experience         I.   Experience      — "The Ages"
+├── #experience         I.   Experience      — "Timeline"
 ├── #projects           II.  Projects        — "The Great Works"
 ├── #skills             III. Skills          — "The Tech Tree"
 ├── #hobbies            IV.  Beyond the Code — "Off the Clock"
@@ -24,7 +24,7 @@ Out of scope for v1: blog, dark theme, easter eggs.
 |---|---|---|
 | 0 | **Hero / Main Menu** | Who, what, where next (Antikythera hero) |
 | 0.5 | **About** | Short bio: engineer + historian |
-| I | **Experience** | Timeline grouped into Ages |
+| I | **Experience** | Timeline grouped into stages |
 | II | **Projects** | 1 Wonder + 2–3 Great Works, then a link to all projects |
 | III | **Skills** | Tech tree |
 | IV | **Hobbies** | 3–6 hobby cards |

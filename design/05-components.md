@@ -31,7 +31,7 @@ The base container that gives everything its Civ-like feel.
 
 A ribbon strip with swallowtail notches cut into both ends (CSS `clip-path`) and gold hairlines top and bottom.
 
-- `tone="light"`: `marble-100` fill, `gold-800` text. Used for the Age headers in the timeline.
+- `tone="light"`: `marble-100` fill, `gold-800` text. Used for the stage headers in the timeline.
 - `tone="dark"`: `lapis-800` fill, `gold-300` text. Used for the "Wonder Completed" banner.
 
 ---

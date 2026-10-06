@@ -69,7 +69,7 @@ Everything shown on the site comes from `content/`. You shouldn't need to touch 
 | What | File | Notes |
 |---|---|---|
 | Name, tagline, bio, "Now" line, email, social links, domain | `content/site.ts` | Also holds the section titles and the `sampleContent` flag |
-| Experience timeline | `content/experience.ts` | Each entry has an `age`: `antiquity` (education), `exploration` (internships, research, TA), `modern` (current). Mark the current role `current: true`. |
+| Experience timeline | `content/experience.ts` | Each entry has a `stage`: `foundations` (education), `first-roles` (internships, research, RA/TA), `industry` (professional roles). Mark the current role `current: true`. |
 | Honors & achievements | `content/honors.ts` | Shown as laurel badges under the timeline |
 | Projects | `content/projects/<slug>.mdx` | The file name becomes the URL (`/projects/<slug>`). See the front matter below. |
 | Skills tech tree | `content/skills.ts` | `requires` draws the connecting lines. `state` is `mastered`, `proficient`, or `researching`. |

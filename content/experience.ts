@@ -1,12 +1,12 @@
 // Sourced from the personal vault. Validated by lib/content.ts at build time.
-// Ages: antiquity = foundations/education · exploration = internships, research, TA · modern = current.
+// Stages: foundations = education · first-roles = internships, research, RA · industry = professional engineering.
 // TODO(raymond): add an expected graduation date to the UW entry if you want one shown.
 
 export const experience = [
   {
     org: "University of Washington",
     role: "B.S. Computer Science & Software Engineering · Minor in Mathematics",
-    age: "antiquity",
+    stage: "foundations",
     start: "2023-09",
     location: "Seattle, WA",
     bullets: [
@@ -17,7 +17,7 @@ export const experience = [
   {
     org: "UW Bothell",
     role: "Resident Assistant",
-    age: "exploration",
+    stage: "first-roles",
     start: "2024-09",
     end: "2026-06",
     location: "Bothell, WA",
@@ -30,7 +30,7 @@ export const experience = [
   {
     org: "AI4DeafBlind, Helen Keller Foundation",
     role: "CSE Intern",
-    age: "exploration",
+    stage: "first-roles",
     start: "2026-01",
     end: "2026-06",
     location: "Seattle, WA",
@@ -43,7 +43,7 @@ export const experience = [
   {
     org: "Costco IT",
     role: "Platform Engineer Intern",
-    age: "modern",
+    stage: "industry",
     start: "2026-06",
     end: "2026-09",
     location: "Issaquah, WA",

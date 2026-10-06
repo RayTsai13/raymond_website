@@ -28,7 +28,7 @@ export const site = {
 const NUMERALS = ["I", "II", "III", "IV", "V"];
 
 const allSections = [
-  { id: "experience", label: "Experience", title: "The Ages" },
+  { id: "experience", label: "Experience", title: "Timeline" },
   { id: "projects", label: "Projects", title: "The Great Works" },
   { id: "skills", label: "Skills", title: "The Tech Tree" },
   { id: "hobbies", label: "Beyond the Code", title: "Off the Clock" },
