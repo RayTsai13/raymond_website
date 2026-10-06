@@ -10,8 +10,7 @@ export const site = {
   tagline: "I build full-stack web apps, cloud data pipelines, and networked systems.",
   description:
     "Portfolio of Raymond Tsai, a software engineer and Computer Science & Software Engineering student at the University of Washington.",
-  // TODO(raymond): set the real domain once it exists.
-  url: "https://example.com",
+  url: "https://raymondtsai.site",
   email: "raytsai.21@gmail.com",
   /** Shows the "Sample content" pill. Set to false once everything is real. */
   sampleContent: false,

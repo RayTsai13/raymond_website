@@ -14,7 +14,7 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 - [ ] 3–4 sentence bio for the About section
 - [ ] "NOW" line: current status or what he's seeking, with timeframe
 - [ ] Links: GitHub (confirm `RayTsai13`), LinkedIn, email, and the site domain
-- [ ] Résumé PDF: put it at `public/resume.pdf`, then enable the download button in `app/resume/page.tsx`
+- [x] Résumé PDF at `public/resume.pdf`
 
 ### Projects (for each) → `content/projects/<slug>.mdx`
 - [ ] Title, one-line summary, date
@@ -59,7 +59,7 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 5. **Blog:** skipped for now.
 6. **Hosting:** AWS eventually. Keep the Docker build working and defer deployment.
 7. **Easter eggs:** off.
-8. **Resume:** placeholder page at `/resume` for now.
+8. **Resume:** download page at `/resume`, serving `public/resume.pdf`.
 
 ## Later decisions
 

@@ -41,7 +41,7 @@ app/                     Routes (App Router)
   page.tsx               Home: Hero → About → Experience → Projects → Skills → Hobbies → Contact
   projects/page.tsx      The Archive: all projects, filterable (?type=…&tech=…)
   projects/[slug]/       Project detail page (MDX) + its Open Graph image
-  resume/page.tsx        Résumé placeholder
+  resume/page.tsx        Résumé download page (PDF in public/resume.pdf)
   not-found.tsx          404
   opengraph-image.tsx    Share card for the home page
   sitemap.ts, robots.ts, icon.svg
@@ -110,9 +110,8 @@ Gaps are marked `TODO(raymond)` in the source:
 1. Hobbies: `content/hobbies.ts` is empty, so the "Beyond the Code" section is hidden. It appears (and the sections renumber) once you add entries.
 2. Screenshots: put them in `public/` and point each project's `cover:` at them. Add repo links too.
 3. Skills: every skill is set to "proficient" with no years. Adjust them in `content/skills.ts`.
-4. Set `url` (your domain) and the tagline in `content/site.ts`.
+4. Rewrite the tagline in `content/site.ts`.
 5. Portrait: the hero shows an "RT" monogram until you add a photo. See the `TODO(raymond)` in `components/sections/Hero.tsx`.
-6. Résumé: add `public/resume.pdf`, then enable the download button in `app/resume/page.tsx`.
 
 The `sampleContent` flag in `content/site.ts` shows a "Sample content" label when set to `true`.
 
