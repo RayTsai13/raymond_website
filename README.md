@@ -16,8 +16,8 @@ npm run dev        # http://localhost:3000
 | Script | What it does |
 |---|---|
 | `npm run dev` | Dev server with hot reload |
-| `npm run build` | Production build (statically generates every page) |
-| `npm run start` | Serve the production build |
+| `npm run build` | Static export of every page into `out/` |
+| `npm run start` | Serve the static export in `out/` locally |
 | `npm run lint` | ESLint |
 
 Before pushing, run `npm run lint && npm run build`. That's what CI checks.
@@ -59,6 +59,8 @@ content/                 ← all site content lives here (see below)
 lib/
   content.ts             Content schemas (zod), loaders, date formatting
   og.tsx                 Shared Open Graph image renderer
+infra/url-rewrite.js     CloudFront Function: clean URLs + www redirect
+scripts/deploy.sh        Uploads out/ to S3 and refreshes CloudFront
 design/                  Design specs: concept, visual language, components, motion, a11y
 ```
 
@@ -122,16 +124,17 @@ The full checklist is in [`design/09-content-inventory.md`](design/09-content-in
 - **Plain text, themed visuals.** No Latin, no Roman-numeral dates, and no roleplay wording ("envoy", "scroll", "forum"…). Strategy-game terms are fine: Ages, Great Works, Wonder, Tech Tree, Next Turn.
 - Descriptions are plain and specific, with numbers where possible.
 
-## Docker & CI
+## Deployment
 
-```bash
-docker build -t raymond-portfolio .
-docker run --rm -p 3000:3000 raymond-portfolio
-```
+The site is a static export (`output: "export"`): `npm run build` writes every page to `out/`, with no Node server at runtime. It's hosted on AWS:
 
-The image uses Next.js `output: "standalone"` on `node:22-alpine` and runs as a non-root user.
+- **S3** bucket `raymondtsai-site-676726973702` (us-west-2, private) holds the files.
+- **CloudFront** distribution `E1UP86IQY7WF6I` serves them over HTTPS. `infra/url-rewrite.js` runs on each request to map `/resume` → `resume.html` and redirect `www` to the bare domain. Missing pages get `404.html`.
+- **GitHub Actions** (`.github/workflows/build.yml`) runs lint → build → export check on pushes and PRs to `main`/`develop`. Pushes to `main` then run `scripts/deploy.sh`, signing in to AWS through the `github-deploy-raymond-website` IAM role (OIDC, no stored keys).
 
-GitHub Actions (`.github/workflows/build.yml`) runs on pushes and PRs to `main`/`develop`. The steps are `npm ci` → lint → build → Docker build → start the container and `curl` it. Deployment (planned: AWS) isn't set up yet.
+To deploy by hand: `npm run build && AWS_PROFILE=<profile> ./scripts/deploy.sh`.
+
+Because there's no server, Next.js features that need one (server actions, cookies, rewrites, image optimization, ISR) won't work. Metadata routes such as `robots.ts` need `export const dynamic = "force-static"`.
 
 ## Design docs
 

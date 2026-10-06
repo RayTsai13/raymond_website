@@ -57,7 +57,7 @@ The design is only as good as what goes in it. Here's what Raymond needs to gath
 3. **Theming intensity:** a rich but minimalist game UI. Mainly Civ VII, with a touch of Imperator: Rome.
 4. **Theme:** Day (light, white and marble with gold accents) only. No dark mode for now.
 5. **Blog:** skipped for now.
-6. **Hosting:** AWS eventually. Keep the Docker build working and defer deployment.
+6. **Hosting:** AWS: static export on S3 + CloudFront, deployed from GitHub Actions.
 7. **Easter eggs:** off.
 8. **Resume:** download page at `/resume`, serving `public/resume.pdf`.
 

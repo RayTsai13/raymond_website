@@ -6,7 +6,7 @@ Personal portfolio (Next.js 16 App Router, React 19, Tailwind v4). See `README.m
 
 ## Workflow
 - Work and commit directly on `main` (single-branch repo). Don't create feature branches unless asked.
-- Verify changes with `npm run lint && npm run build`. CI runs the same, plus a Docker build and a smoke test.
+- Verify changes with `npm run lint && npm run build`. CI runs the same, checks the static export, and deploys `main` to S3 + CloudFront.
 - Check visual changes in a real browser at 375px and 1440px widths.
 
 ## Content

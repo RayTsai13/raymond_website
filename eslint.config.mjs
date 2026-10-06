@@ -5,7 +5,8 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+  // infra/ holds CloudFront Function code, which runs in its own runtime.
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "infra/**"]),
 ]);
 
 export default eslintConfig;

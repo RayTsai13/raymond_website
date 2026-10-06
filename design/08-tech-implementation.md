@@ -11,7 +11,7 @@
 | Icons | `lucide-react` for utility icons. Ornaments and emblems are original inline SVG React components. | lucide v1 has no brand icons, so GitHub/LinkedIn glyphs live in `components/ui/icons.tsx` |
 | Fonts | `next/font/google`: Cinzel, EB Garamond, Cormorant Garamond (italic), JetBrains Mono | Self-hosted at build time |
 | OG images | `next/og` (`lib/og.tsx`) | Fetches the Cinzel TTF at build; falls back to the default font if offline |
-| Deploy | Docker (`output: "standalone"`), CI on GitHub Actions | Hosting target: AWS (not set up yet) |
+| Deploy | Static export (`output: "export"`) to S3 + CloudFront, deployed by GitHub Actions | See README → Deployment |
 
 ## Folder structure (as built)
 
@@ -113,10 +113,11 @@ type Hobby = { name: string; icon: "owl" | "amphora" | "trireme" | "quill" | "co
 
 Projects are sorted by tier (wonder → great-work → work), then newest first.
 
-## Build, CI, and Docker
+## Build, CI, and deploy
 
-- `npm run lint`, then `npm run build`. Both must pass. CI (`.github/workflows/build.yml`, Node 22) runs them on pushes and PRs to `main`/`develop`, then builds the Docker image, starts it, and `curl`s port 3000.
-- `Dockerfile`: multi-stage `node:22-alpine`, `npm ci` → `next build` → copies `.next/standalone`, `.next/static`, and `public/`, then runs `node server.js` as a non-root user. `public/.gitkeep` makes sure `public/` exists on a fresh checkout.
+- `npm run lint`, then `npm run build`. Both must pass. CI (`.github/workflows/build.yml`, Node 22) runs them on pushes and PRs to `main`/`develop` and checks that the static export in `out/` has every page.
+- `output: "export"` means no server features: metadata routes need `dynamic = "force-static"`, dynamic routes need `generateStaticParams` + `dynamicParams = false`, and `next/image` runs unoptimized.
+- Pushes to `main` deploy `out/` to S3 + CloudFront (`scripts/deploy.sh`). `infra/url-rewrite.js` maps clean URLs to `.html` files and redirects `www`.
 - Work happens on `main`.
 
 ## Build order (done)
