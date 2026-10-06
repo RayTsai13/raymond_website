@@ -199,6 +199,13 @@
   }
 }
 
+@keyframes mech-recede {
+  to {
+    transform: rotate(40deg) scale(0.85);
+    opacity: 0.25;
+  }
+}
+
 .mech-ring {
   transform-box: view-box;
   transform-origin: center;
@@ -232,6 +239,14 @@
   }
   .unfurl {
     animation: unfurl 700ms var(--ease-ceremonial) both;
+  }
+  /* Scroll-linked: the mechanism turns, shrinks and fades as the hero scrolls away. */
+  @supports (animation-timeline: view()) {
+    .mech-recede {
+      animation: mech-recede linear both;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 100%;
+    }
   }
 }
 

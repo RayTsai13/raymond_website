@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 export function About() {
   const [first, ...rest] = site.about;
   return (
-    <section id="about" aria-labelledby="about-title" className="px-4 py-20 md:py-28">
+    <section id="about" aria-labelledby="about-title" className="relative px-4 py-20 md:py-28">
       <Reveal className="mx-auto max-w-3xl">
         <FramedPanel variant="parchment" className="px-6 py-10 md:px-14 md:py-14">
           <h2 id="about-title" className="label mb-6 text-center text-bronze-700">

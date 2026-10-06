@@ -11,10 +11,15 @@ const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 /** "Main Menu": medallion, inscription name, game-menu buttons over the Antikythera mechanism. */
 export function Hero() {
   return (
-    <section aria-label="Introduction" className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden px-4 pb-16 pt-28">
+    <section aria-label="Introduction" className="relative isolate flex min-h-dvh items-center justify-center overflow-x-clip px-4 pb-16 pt-28 [view-timeline-name:--hero]">
       {/* warm light from above + the mechanism */}
       <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(90%_60%_at_50%_0%,#fffaf0_0%,transparent_70%)]" />
-      <Mechanism className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[max(150vmin,720px)] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-80" />
+      {/* bleeds below the hero behind About; fades out and recedes on scroll (.mech-recede) */}
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[max(150vmin,720px)] -translate-x-1/2 -translate-y-1/2 [mask-image:linear-gradient(to_bottom,#000_55%,transparent_92%)]">
+        <div className="mech-recede">
+          <Mechanism className="block w-full opacity-80" />
+        </div>
+      </div>
       {/* soft ivory halo keeps the text column legible over the lines */}
       <div aria-hidden className="absolute left-1/2 top-1/2 -z-10 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(251_248_242/0.92)_30%,rgb(251_248_242/0)_70%)]" />
 
