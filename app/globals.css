@@ -269,12 +269,14 @@
     opacity: 1;
   }
 }
+/* negative side insets leave room for the sheet's side shadow; the bottom edge
+   stays flush with the bottom roll, which casts its own */
 @keyframes about-unfurl {
   from {
-    clip-path: inset(0 0 100% 0);
+    clip-path: inset(0 -3rem 100% -3rem);
   }
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(0 -3rem 0 -3rem);
   }
 }
 @keyframes about-roller-drop {
@@ -293,9 +295,9 @@
     transform: translateY(-3vh);
   }
 }
-@keyframes about-dust {
+@keyframes about-stars {
   0% {
-    transform: translateY(calc(var(--dust) / 2));
+    transform: translateY(calc(var(--stars) / 2));
     opacity: 0;
   }
   20%,
@@ -303,12 +305,12 @@
     opacity: 1;
   }
   100% {
-    transform: translateY(calc(var(--dust) / -2));
+    transform: translateY(calc(var(--stars) / -2));
     opacity: 0;
   }
 }
 
-.about-dust {
+.about-stars {
   display: none;
 }
 
@@ -327,7 +329,7 @@
     .about-sheet,
     .about-roller,
     .about-drift,
-    .about-dust {
+    .about-stars {
       animation-timeline: --about;
       animation-fill-mode: both;
       animation-timing-function: linear;
@@ -346,19 +348,16 @@
       animation-name: about-roller-drop;
       animation-range: cover 18% cover 70%;
     }
-    .about-dust {
+    .about-stars {
       display: block;
-      animation-name: about-dust;
+      animation-name: about-stars;
       animation-range: cover 0% cover 100%;
     }
-    .about-dust-far {
-      --dust: 10vh;
+    .about-stars-far {
+      --stars: 12vh;
     }
-    .about-dust-mid {
-      --dust: 25vh;
-    }
-    .about-dust-near {
-      --dust: 45vh;
+    .about-stars-near {
+      --stars: 40vh;
     }
 
     /* Pinned: the stage sticks for one extra screen of scrolling. */

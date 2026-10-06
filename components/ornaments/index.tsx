@@ -139,4 +139,4 @@ export function Monogram({ className, ...props }: OrnamentProps) {
   );
 }
 
-export { DustMotes, ScrollRoller } from "./Scroll";
+export { ScrollRoller, StarField } from "./Scroll";

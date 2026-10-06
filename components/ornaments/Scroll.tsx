@@ -1,69 +1,136 @@
 /**
- * Hanging-scroll parts for the About section: a bronze roller with gold
- * finials, and drifting gold dust. Decorative only (aria-hidden), and
+ * Hanging-scroll parts for the About section: a roll of the parchment itself
+ * on a gilt rod, and faint line-art constellations (the hero mechanism's
+ * vocabulary) for the parallax layers. Decorative only (aria-hidden), and
  * deterministic (no randomness) so server and client markup match.
  */
+import { useId } from "react";
 
-const f = (n: number) => n.toFixed(1);
-
-function Finial({ flip = false }: { flip?: boolean }) {
+/** Gilt rod end (cornu) poking out past the roll; points left unless flipped. */
+function RodEnd({ flip = false }: { flip?: boolean }) {
+  const id = useId();
   return (
     <svg
       aria-hidden
       focusable="false"
-      viewBox="0 0 24 24"
-      className="h-6 w-6 shrink-0"
+      viewBox="0 0 16 24"
+      className="h-6 w-4 shrink-0"
       style={flip ? { transform: "scaleX(-1)" } : undefined}
     >
-      {/* collar where the knob meets the rod */}
-      <rect x="15" y="7" width="9" height="10" rx="1.5" fill="#a8843f" />
-      <rect x="15" y="7" width="9" height="3" rx="1.5" fill="#e8d3a0" opacity="0.7" />
-      {/* knob */}
-      <circle cx="10" cy="12" r="8" fill="#c9a45c" stroke="#a8843f" strokeWidth="1" />
-      <circle cx="7.5" cy="9" r="2.6" fill="#e8d3a0" opacity="0.85" />
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#f3e4bd" />
+          <stop offset="0.35" stopColor="#c9a45c" />
+          <stop offset="1" stopColor="#7a5c24" />
+        </linearGradient>
+      </defs>
+      {/* ferrule capping the roll, a short neck, then a turned knob */}
+      <rect x="11" y="5" width="5" height="14" rx="1" fill={`url(#${id})`} />
+      <rect x="8.6" y="9.5" width="2.8" height="5" fill={`url(#${id})`} />
+      <ellipse cx="5.2" cy="12" rx="4.6" ry="5.4" fill={`url(#${id})`} />
+      <ellipse cx="4.2" cy="9.6" rx="1.8" ry="1.3" fill="#fbf1d6" opacity="0.7" />
+      <path d="M11 5V19" stroke="#7a5c24" strokeWidth="0.6" opacity="0.5" />
     </svg>
   );
 }
 
-/** A bronze dowel with gold knob finials; overhangs its container by 1.25rem each side. */
+/**
+ * The rolled-up parchment: a cylinder in the sheet's own colours, lit from
+ * above like the rest of the page, with the edge of the outer layer showing.
+ * Overhangs its container by the rod ends so the roll matches the sheet width.
+ */
 export function ScrollRoller({ className }: { className?: string }) {
   return (
-    <div aria-hidden className={`-mx-5 flex items-center ${className ?? ""}`}>
-      <Finial />
-      <div className="h-3.5 flex-1 rounded-[3px] bg-[linear-gradient(to_bottom,#9a7650_0%,#c49a68_28%,#6b4e2e_62%,#3d2b17_100%)] shadow-[0_3px_6px_rgb(60_40_10/0.25)]" />
-      <Finial flip />
+    <div aria-hidden className={`-mx-4 flex items-center ${className ?? ""}`}>
+      <RodEnd />
+      <div
+        className="relative h-5 flex-1 rounded-[2px] shadow-[0_2px_3px_rgb(90_60_20/0.22),0_6px_14px_rgb(90_60_20/0.1)]"
+        style={{
+          background: [
+            // the outer layer's edge, just below the crown
+            "linear-gradient(to bottom, transparent 62%, rgb(122 92 36 / 0.22) 62%, rgb(122 92 36 / 0.22) calc(62% + 1px), transparent calc(62% + 1px))",
+            // cylinder shading: soft highlight on top, falling into shadow underneath
+            "linear-gradient(to bottom, #d8c69c 0%, #fbf4e3 20%, #f1e6cc 42%, #e2d2ab 66%, #b89c68 92%, #9c8152 100%)",
+          ].join(","),
+        }}
+      >
+        {/* paper-thin rims where the roll meets the rod */}
+        <span className="absolute inset-y-0 left-0 w-px bg-bronze-700/25" />
+        <span className="absolute inset-y-0 right-0 w-px bg-bronze-700/25" />
+      </div>
+      <RodEnd flip />
     </div>
   );
 }
 
-const DEPTHS = {
-  far: { count: 42, r: 1.3, opacity: 0.35, seed: 0.13 },
-  mid: { count: 24, r: 2.1, opacity: 0.5, seed: 0.41 },
-  near: { count: 12, r: 3.2, opacity: 0.55, seed: 0.77 },
-} as const;
+type Pt = [number, number];
 
-export type DustDepth = keyof typeof DEPTHS;
+// Constellations for the gutters either side of the scroll (viewBox 300×900 per side).
+const FIELDS: Record<"far" | "near", { left: Pt[][]; right: Pt[][]; r: number; opacity: number }> = {
+  far: {
+    left: [
+      [[40, 120], [110, 90], [170, 150], [230, 130]],
+      [[70, 520], [125, 470], [160, 560], [95, 610]],
+    ],
+    right: [
+      [[70, 270], [140, 225], [200, 300], [262, 272]],
+      [[50, 770], [130, 728], [212, 795]],
+    ],
+    r: 1.6,
+    opacity: 0.4,
+  },
+  near: {
+    left: [
+      [[150, 300], [218, 362], [182, 432], [250, 485]],
+      [[60, 820], [140, 776], [205, 830]],
+    ],
+    right: [
+      [[62, 545], [130, 602], [210, 560], [238, 642]],
+      [[100, 40], [190, 92], [252, 44]],
+    ],
+    r: 2.2,
+    opacity: 0.65,
+  },
+};
 
-/** One layer of gold specks, evenly scattered via the R2 low-discrepancy sequence. */
-export function DustMotes({ depth, className }: { depth: DustDepth; className?: string }) {
-  const { count, r, opacity, seed } = DEPTHS[depth];
-  const motes = Array.from({ length: count }, (_, i) => {
-    const x = ((seed + (i + 1) * 0.7548776662) % 1) * 1000;
-    const y = ((seed + (i + 1) * 0.5698402910) % 1) * 1000;
-    return { x, y, light: i % 3 === 0 };
-  });
+function Constellations({ groups, r, opacity, className }: { groups: Pt[][]; r: number; opacity: number; className?: string }) {
   return (
     <svg
       aria-hidden
       focusable="false"
-      viewBox="0 0 1000 1000"
+      viewBox="0 0 300 900"
       preserveAspectRatio="xMidYMid slice"
       className={className}
       opacity={opacity}
+      fill="none"
+      stroke="#c9a45c"
+      strokeLinecap="round"
     >
-      {motes.map(({ x, y, light }) => (
-        <circle key={`${f(x)}-${f(y)}`} cx={f(x)} cy={f(y)} r={r} fill={light ? "#e8d3a0" : "#c9a45c"} />
+      {groups.map((pts) => (
+        <g key={pts.join()}>
+          <path d={`M${pts.map(([x, y]) => `${x} ${y}`).join("L")}`} strokeWidth="0.7" strokeDasharray="2 4" />
+          {pts.map(([x, y], i) => (
+            <g key={`${x}-${y}`}>
+              <circle cx={x} cy={y} r={r} fill="#c9a45c" stroke="none" />
+              {/* the brightest star of each figure gets a halo ring */}
+              {i === 0 && <circle cx={x} cy={y} r={r * 3} strokeWidth="0.5" />}
+            </g>
+          ))}
+        </g>
       ))}
     </svg>
+  );
+}
+
+export type StarDepth = keyof typeof FIELDS;
+
+/** One parallax layer: a constellation panel in each gutter beside the scroll. */
+export function StarField({ depth, className }: { depth: StarDepth; className?: string }) {
+  const { left, right, r, opacity } = FIELDS[depth];
+  return (
+    <div aria-hidden className={className}>
+      <Constellations groups={left} r={r} opacity={opacity} className="absolute inset-y-0 left-0 h-full w-[min(22vw,320px)]" />
+      <Constellations groups={right} r={r} opacity={opacity} className="absolute inset-y-0 right-0 h-full w-[min(22vw,320px)]" />
+    </div>
   );
 }
