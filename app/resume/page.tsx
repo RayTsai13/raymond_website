@@ -33,13 +33,16 @@ export default function ResumePage() {
       </header>
 
       {/* Native viewer, no JS. Browsers without inline PDF support (most Android) show the fallback.
-          Height = one Letter page at full width plus room for the browser's PDF toolbar. */}
+          Height = one Letter page at full width plus slack for the viewer's page margins.
+          Static preview: pointer events pass through so the page scrolls instead of the viewer
+          (the buttons above cover download/open). */}
       <FramedPanel variant="ornate" className="@container mt-6 w-full p-2">
         <object
-          data={`${RESUME}#view=FitH&navpanes=0`}
+          data={`${RESUME}#view=FitH&navpanes=0&toolbar=0&scrollbar=0`}
           type="application/pdf"
           aria-label="Raymond Tsai's résumé (PDF)"
-          className="block h-[calc(100cqw*11/8.5+3.5rem)] w-full rounded-[1px] bg-ivory-0"
+          tabIndex={-1}
+          className="pointer-events-none block h-[calc(100cqw*11/8.5+3.5rem)] w-full rounded-[1px] bg-ivory-0"
         >
           <div className="grid h-full place-items-center px-6 text-center">
             <p className="max-w-[32ch] text-ink-700">
