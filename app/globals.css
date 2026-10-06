@@ -254,6 +254,148 @@
   }
 }
 
+/* ── Motion: About hanging scroll ──────────────────────────────────────────
+   Default (no scroll timelines, reduced motion, no JS): the scroll is open and
+   static. Otherwise it flies in, unrolls top-down and holds, scrubbed by scroll
+   position on the section's view timeline. Wide + tall screens pin the stage;
+   smaller ones run the same moves as the section enters. */
+@keyframes about-approach {
+  from {
+    transform: perspective(1200px) translateY(8vh) rotateX(28deg) scale(0.55);
+    opacity: 0.35;
+  }
+  to {
+    transform: perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes about-unfurl {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes about-roller-drop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes about-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-3vh);
+  }
+}
+@keyframes about-dust {
+  0% {
+    transform: translateY(calc(var(--dust) / 2));
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(var(--dust) / -2));
+    opacity: 0;
+  }
+}
+
+.about-dust {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .about-track {
+      view-timeline-name: --about;
+    }
+    /* the scroll animates itself; skip <Reveal>'s fade-up */
+    .about-track [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .about-scroll,
+    .about-sheet,
+    .about-roller,
+    .about-drift,
+    .about-dust {
+      animation-timeline: --about;
+      animation-fill-mode: both;
+      animation-timing-function: linear;
+    }
+    .about-scroll {
+      animation-name: about-approach;
+      animation-range: entry 0% entry 45%;
+      transform-origin: 50% 0%;
+    }
+    /* unpinned: the roller trails the viewport bottom so the unroll stays on screen */
+    .about-sheet {
+      animation-name: about-unfurl;
+      animation-range: cover 18% cover 70%;
+    }
+    .about-roller {
+      animation-name: about-roller-drop;
+      animation-range: cover 18% cover 70%;
+    }
+    .about-dust {
+      display: block;
+      animation-name: about-dust;
+      animation-range: cover 0% cover 100%;
+    }
+    .about-dust-far {
+      --dust: 10vh;
+    }
+    .about-dust-mid {
+      --dust: 25vh;
+    }
+    .about-dust-near {
+      --dust: 45vh;
+    }
+
+    /* Pinned: the stage sticks for one extra screen of scrolling. */
+    @media (min-width: 48rem) and (min-height: 47rem) {
+      .about-track {
+        height: 200vh;
+        padding-block: 0;
+      }
+      .about-stage {
+        position: sticky;
+        top: 0;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        padding-top: 4rem; /* clear the fixed nav */
+      }
+      /* #about lands where the scroll is fully open, about contain 70%. The view
+         timeline honours scroll-padding-top (5rem), so contain spans 100vh + 5rem. */
+      .about-anchor {
+        top: calc(70vh + 3.5rem);
+      }
+      .about-scroll {
+        animation-range: entry 30% contain 0%;
+        transform-origin: 50% 50%;
+      }
+      .about-sheet,
+      .about-roller {
+        animation-range: contain 0% contain 60%;
+      }
+      .about-drift {
+        animation-name: about-drift;
+        animation-range: contain 60% contain 100%;
+      }
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

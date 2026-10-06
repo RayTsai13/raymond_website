@@ -138,3 +138,5 @@ export function Monogram({ className, ...props }: OrnamentProps) {
     </svg>
   );
 }
+
+export { DustMotes, ScrollRoller } from "./Scroll";
