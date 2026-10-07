@@ -19,8 +19,11 @@ npm run dev        # http://localhost:3000
 | `npm run build` | Static export of every page into `out/` |
 | `npm run start` | Serve the static export in `out/` locally |
 | `npm run lint` | ESLint |
+| `npm test` | Unit tests for the CloudFront URL rewrite (`tests/`) |
+| `npm run check:export` | After a build: every sitemap page, OG image and internal link/`#anchor` in `out/` resolves |
+| `npm run test:e2e` | After a build: Playwright checks in `e2e/` (text visible without JS, reduced motion, axe WCAG AA, no horizontal scroll at 375/1440px). First run: `npx playwright install chromium` |
 
-Before pushing, run `npm run lint && npm run build`. That's what CI checks.
+Before pushing, run `npm run lint && npm test && npm run build && npm run check:export && npm run test:e2e`. That's what CI checks.
 
 ## Tech stack
 
@@ -61,6 +64,10 @@ lib/
   og.tsx                 Shared Open Graph image renderer
 infra/url-rewrite.js     CloudFront Function: clean URLs + www redirect
 scripts/deploy.sh        Uploads out/ to S3 and refreshes CloudFront
+scripts/smoke.sh         Post-deploy checks against the live site
+scripts/check-export.mjs Checks out/ for missing pages and broken internal links
+scripts/serve-out.mjs    Serves out/ with CloudFront's URL rewrite (used by e2e tests)
+tests/, e2e/             Unit tests (node:test) and Playwright browser tests
 design/                  Design specs: concept, visual language, components, motion, a11y
 ```
 
@@ -130,7 +137,9 @@ The site is a static export (`output: "export"`): `npm run build` writes every p
 
 - **S3** bucket `raymondtsai-site-676726973702` (us-west-2, private) holds the files.
 - **CloudFront** distribution `E1UP86IQY7WF6I` serves them over HTTPS. `infra/url-rewrite.js` runs on each request to map `/resume` → `resume.html` and redirect `www` to the bare domain. Missing pages get `404.html`.
-- **GitHub Actions** (`.github/workflows/build.yml`) runs lint → build → export check on pushes and PRs to `main`/`develop`. Pushes to `main` then run `scripts/deploy.sh`, signing in to AWS through the `github-deploy-raymond-website` IAM role (OIDC, no stored keys).
+- **GitHub Actions** (`.github/workflows/build.yml`) runs on pushes and PRs to `main`: runtime `npm audit` → lint → unit tests → build → export/link check, then the Playwright suite against the built `out/`. Pushes to `main` (or a manual run) then run `scripts/deploy.sh`, signing in to AWS through the `github-deploy-raymond-website` IAM role (OIDC, no stored keys), and `scripts/smoke.sh` checks the live site (pages, clean URLs, 404, content types, `www` redirect). Set the repo variable `SITE_URL` to smoke-test a different URL, such as the `*.cloudfront.net` domain before DNS is live.
+- `.github/workflows/links.yml` checks external links weekly. Dependabot (`.github/dependabot.yml`) opens weekly npm and GitHub Actions updates; actions are pinned to commit SHAs.
+- `infra/url-rewrite.js` is **not** deployed by CI. After editing it, publish it in the CloudFront console (or `aws cloudfront update-function` + `publish-function`).
 
 To deploy by hand: `npm run build && AWS_PROFILE=<profile> ./scripts/deploy.sh`.
 

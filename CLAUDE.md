@@ -6,7 +6,8 @@ Personal portfolio (Next.js 16 App Router, React 19, Tailwind v4). See `README.m
 
 ## Workflow
 - Work and commit directly on `main` (single-branch repo). Don't create feature branches unless asked.
-- Verify changes with `npm run lint && npm run build`. CI runs the same, checks the static export, and deploys `main` to S3 + CloudFront.
+- Verify changes with `npm run lint && npm test && npm run build && npm run check:export && npm run test:e2e`. CI runs the same, deploys `main` to S3 + CloudFront, then smoke-tests the live site.
+- `e2e/site.spec.ts` enforces the design rules below (no-JS visibility, reduced motion, axe AA contrast, no overflow at 375/1440). Fix the site, don't loosen the test.
 - Check visual changes in a real browser at 375px and 1440px widths.
 
 ## Content

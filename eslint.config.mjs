@@ -6,7 +6,7 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   // infra/ holds CloudFront Function code, which runs in its own runtime.
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "infra/**"]),
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "infra/**", "playwright-report/**", "test-results/**"]),
 ]);
 
 export default eslintConfig;
