@@ -157,7 +157,9 @@ export function SectionHeading({
   title,
   intro,
   align = "center",
+  as: Heading = "h2",
 }: {
+  as?: "h1" | "h2";
   id: string;
   numeral?: string;
   label: string;
@@ -168,7 +170,7 @@ export function SectionHeading({
   const centered = align === "center";
   return (
     <Reveal className={cn("mb-12 md:mb-16", centered && "text-center")}>
-      <h2 id={id} className="flex flex-col gap-3">
+      <Heading id={id} className="flex flex-col gap-3">
         <span className="label text-ink-500">
           {numeral && (
             <>
@@ -183,7 +185,7 @@ export function SectionHeading({
         <span className="inscription text-[2rem] font-semibold leading-[1.1] text-ink-900 md:text-[2.75rem]">
           {title}
         </span>
-      </h2>
+      </Heading>
       <Divider variant="meander" draw className={cn("mt-5", centered ? "mx-auto max-w-md" : "max-w-xs")} />
       {intro && (
         <p className={cn("mt-5 text-lg text-ink-700 md:text-xl", centered && "mx-auto max-w-[60ch]")}>{intro}</p>

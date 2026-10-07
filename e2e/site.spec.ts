@@ -51,7 +51,7 @@ for (const url of pages) {
 
       test("all text is visible", async ({ page }) => {
         await page.goto(url);
-        await expect(page.locator("main :is(h1, h2)").first()).toBeVisible();
+        await expect(page.locator("h1")).toBeVisible();
         expect(await invisibleText(page)).toEqual([]);
       });
     });
@@ -109,10 +109,7 @@ test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
 
   test("the archive lists every project", async ({ page }) => {
-    // Known bug: <Codex> reads useSearchParams inside <Suspense>, so the static export
-    // ships an empty fallback and the list only appears after hydration.
-    // Remove this line once the list is prerendered.
-    test.fail();
+    // <Codex> reads the URL, which a static export can't know; the unfiltered list must be the fallback.
     await page.goto("/projects");
     for (const url of pages.filter((p) => p.startsWith("/projects/"))) {
       await expect(page.locator(`main a[href="${url}"]`).first()).toBeVisible();

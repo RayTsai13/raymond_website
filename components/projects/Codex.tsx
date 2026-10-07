@@ -20,13 +20,6 @@ export function Codex({ projects }: { projects: ProjectMeta[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
-  const type = params.get("type");
-  const tech = params.get("tech");
-
-  const types = useMemo(() => [...new Set(projects.flatMap((p) => p.types))], [projects]);
-  const techs = useMemo(() => [...new Set(projects.flatMap((p) => p.stack))].sort(), [projects]);
-
-  const filtered = projects.filter((p) => (!type || p.types.includes(type as ProjectType)) && (!tech || p.stack.includes(tech)));
 
   const setParam = (key: "type" | "tech", value: string | null) => {
     const next = new URLSearchParams(params);
@@ -35,6 +28,30 @@ export function Codex({ projects }: { projects: ProjectMeta[] }) {
     const qs = next.toString();
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   };
+
+  return <CodexView projects={projects} type={params.get("type")} tech={params.get("tech")} onFilter={setParam} />;
+}
+
+/**
+ * The archive for a given filter. Rendered unfiltered as the <Suspense> fallback, so the
+ * full list is in the static HTML: useSearchParams can't be known at build time.
+ */
+export function CodexView({
+  projects,
+  type = null,
+  tech = null,
+  onFilter,
+}: {
+  projects: ProjectMeta[];
+  type?: string | null;
+  tech?: string | null;
+  onFilter?: (key: "type" | "tech", value: string | null) => void;
+}) {
+  const types = useMemo(() => [...new Set(projects.flatMap((p) => p.types))], [projects]);
+  const techs = useMemo(() => [...new Set(projects.flatMap((p) => p.stack))].sort(), [projects]);
+
+  const filtered = projects.filter((p) => (!type || p.types.includes(type as ProjectType)) && (!tech || p.stack.includes(tech)));
+  const setParam = (key: "type" | "tech", value: string | null) => onFilter?.(key, value);
 
   return (
     <div>
